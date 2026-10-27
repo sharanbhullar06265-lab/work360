@@ -1,0 +1,6 @@
+{
+  "name": "Work360 Agency",
+  "description": "Your Brand. Our 360° Approach. We help small businesses in Australia get found on Google, look great online and get more calls.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

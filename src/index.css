@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+:root {
+  --token-9237d7aa-ae04-4663-8b83-ee7cccdc8605: #eeeee8;
+  --token-45f6f621-43e5-4692-9e92-8cdf32153d42: #0d0e10;
+  --token-c7a2760e-f616-4352-83dc-0c94bfe303e8: #d4ff3a;
+  --token-a7e52844-8ba1-418e-b1e2-04e4f47f2238: #16181b;
+  --token-a86eb914-2cdf-4002-b215-1058b133418e: #dcdcd3;
+  --token-51259b5f-7a5c-47ce-a1f8-c0bff67d9863: #75766f;
+  --token-162a8ed2-d9cc-4e63-b409-eec78655849b: #ffffff;
+  --token-23acf9e9-1a5b-4e7c-909d-51fc1ee8c0c1: #08090a;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--token-9237d7aa-ae04-4663-8b83-ee7cccdc8605);
+  color: var(--token-45f6f621-43e5-4692-9e92-8cdf32153d42);
+  font-family: "Funnel Sans", "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
