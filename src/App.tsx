@@ -105,7 +105,13 @@ export default function App() {
         const el = document.getElementById(sectionId);
         if (el) {
           e.preventDefault();
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
+          try {
+            document.documentElement.style.overflow = "";
+            (window as any).__ltLenis?.start?.();
+          } catch {}
+          requestAnimationFrame(() => {
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+          });
         }
       }
     };
@@ -178,10 +184,11 @@ export default function App() {
           <RwClients
             {...THEME_TOKENS}
             bpHint="auto"
-            clients="Northside Dental|local|+826% organic|22;Kettlebrook Coffee|local|96k followers|134;Fitloop|national|6.2× ROAS|298;Haven Realty|regional|122 leads/mo|74;Lumen Skin|national|$142k launch|196;Orbit Legal|regional|57 consults/mo|342;Tallow Kitchen|local|+410% bookings|108;Brightline Run|global|1.4M reach|252;Parcel & Co|national|+88% revenue|56;Verde Studio|regional|3.8× pipeline|168"
-            count=""
+            clients="Northside Dental, Kettlebrook Coffee, Fitloop, Haven Realty, Lumen Skin, Orbit Legal, Parcel & Co, Verde Studio, Tallow, Brightline"
+            badges="+212%;+96k;6.2×;+122;$142k;57 consults;+88%;+3.1×;+64%;+41k"
+            clientsCount=""
             eyebrow="(00) Clients"
-            heading="brands|*on our radar*."
+            heading="{n} brands|*on our radar*."
             line="Local clinics, cafés and online shops to national brands. Every one of them came to us to be found by more of the right people."
             ratingLine=""
             readout="Last ping"
@@ -367,7 +374,7 @@ export default function App() {
         </div>
 
         {/* (09) FAQ — Accordion with Vertical Progress Track */}
-        <div id="faq-section">
+        <div id="faq">
           <RwFaq
             {...THEME_TOKENS}
             bpHint="auto"
