@@ -174,7 +174,7 @@ export default function App() {
             secondaryLink="/#work"
             services="SEO, Social media, Paid ads, Content"
             showNav={false}
-            subCopy="Reachwise is a digital marketing agency. We run SEO, social media and paid ads that put your brand in front of the people who buy, and we report every result in plain numbers."
+            subCopy="Work360 Agency is a digital marketing agency. We run SEO, social media and paid ads that put your brand in front of the people who buy, and we report every result in plain numbers."
             style={{ width: "100%" }}
           />
         </div>
@@ -197,7 +197,7 @@ export default function App() {
           />
         </div>
 
-        {/* (01) Why Reachwise — 1,200 People Crowd */}
+        {/* (01) Why Work360 — 1,200 People Crowd */}
         <div id="about">
           <RwIntro
             {...THEME_TOKENS}
@@ -207,8 +207,8 @@ export default function App() {
             buyersShare={12}
             clusters="Search|312|searching “dentist near me”;Feeds|1,204|following #coffee;Audiences|88|lookalikes"
             crowdLabel="people in the crowd"
-            eyebrow="(01) Why Reachwise"
-            facts="Founded 2016;38 people;New York + remote"
+            eyebrow="(01) Why Work360"
+            facts="Founded 2026;Remote team;Serving Australia"
             heading="Everyone is a crowd.|We find *your buyers*."
             ratioLabel="1 in"
             ratioTail="is your buyer"
@@ -333,7 +333,7 @@ export default function App() {
         <div id="reviews">
           <RwReviews
             {...THEME_TOKENS}
-            appName="Reachwise"
+            appName="Work360"
             badges="Google 4.9;Clutch 5.0;G2 4.8"
             bpHint="auto"
             button="Read case studies"
@@ -427,13 +427,13 @@ export default function App() {
             spotsTitle="3 spots left for Q4"
             spotsTotal={8}
             sub="Get a free 30-minute audit of your site, socials and ads. You keep the plan, whether we work together or not."
-            teamNote="38 specialists on the team"
+            teamNote="A focused remote team"
             style={{ width: "100%" }}
           />
         </div>
       </main>
 
-      {/* Footer — Giant Interactive Reachwise Wordmark */}
+      {/* Footer — Giant Interactive Work360 Wordmark */}
       <div id="footer">
         <RwFooter
           {...THEME_TOKENS}
