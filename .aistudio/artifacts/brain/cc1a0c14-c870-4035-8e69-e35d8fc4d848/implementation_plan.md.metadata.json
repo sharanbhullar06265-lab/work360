@@ -1,6 +1,6 @@
 {
-  "summary":  "Implementation plan for building an exact 1:1 visual and interactive replica of the Reachwise / work360 homepage across all 12 numbered sections shown in the user's 47 reference screenshots, with centralized content configuration for easy customization afterward.",
-  "updatedAt":  "2026-10-27T12:33:42.433031502Z",
+  "summary":  "Implementation plan for updating only the hero section (RwHero) with the 6 exact text, button, and rolling counter (0 to 360°) changes while keeping all styling, fonts, colours, animations, and other page sections untouched.",
+  "updatedAt":  "2026-10-29T09:57:35.675178677Z",
   "requestFeedback":  true,
   "userFacing":  true
 }

@@ -160,9 +160,9 @@ export default function App() {
             {...THEME_TOKENS}
             bpHint="auto"
             chips="❤|1.2k likes on one reel;+|86 new followers;★|New 5-star review;#1|“dentist near me”;●|12 leads today;↗|CTR up to 4.8%;✓|Call booked · Tue 10:30;◎|+318 profile visits;▶|48k video views;$|ROAS 6.2×"
-            counterLabel="People reached for clients this month"
-            counterStart={1284300}
-            eyebrow=""
+            counterLabel="VIEWS FOR OUR CLIENTS"
+            counterStart={270461}
+            eyebrow="Now booking · Free audit for Aussie businesses"
             focusX={50}
             focusY={50}
             heading="Get seen by|the *right crowd.*"
@@ -170,11 +170,12 @@ export default function App() {
             navCta="Book a call"
             navLinks="Services:/#services, Work:/#work, Pricing:/#pricing, About:/#about, Blog:/#blog"
             primary="Book a strategy call"
-            secondary="See our work"
-            secondaryLink="/#work"
+            primaryLink="/#contact"
+            secondary="Get a free audit"
+            secondaryLink="/#contact"
             services="SEO, Social media, Paid ads, Content"
             showNav={false}
-            subCopy="Work360 Agency is a digital marketing agency. We run SEO, social media and paid ads that put your brand in front of the people who buy, and we report every result in plain numbers."
+            subCopy="We get Australian small businesses seen on Google, social media and ads, and report every result in plain numbers."
             style={{ width: "100%" }}
           />
         </div>
