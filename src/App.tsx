@@ -185,13 +185,13 @@ export default function App() {
           <RwClients
             {...THEME_TOKENS}
             bpHint="auto"
-            clients="Northside Dental, Kettlebrook Coffee, Fitloop, Haven Realty, Lumen Skin, Orbit Legal, Parcel & Co, Verde Studio, Tallow, Brightline"
-            badges="+212%;+96k;6.2×;+122;$142k;57 consults;+88%;+3.1×;+64%;+41k"
+            clients="Facebook views, Engagement, New followers, Comments, Messages, Group post reach, Reel views, Shares, Google Profile views, Instagram reach"
+            badges="390k;41k;1,500+;150+;70+;30k+;8k+;18+;507;1,500"
             clientsCount=""
-            eyebrow="(00) Clients"
-            heading="{n} brands|*on our radar*."
-            line="Local clinics, cafés and online shops to national brands. Every one of them came to us to be found by more of the right people."
-            ratingLine=""
+            eyebrow="(00) Real results"
+            heading="Real numbers from a|*Perth farm stall*."
+            line="One local business, 28 days of Google, Facebook and Instagram work. Every number below is real."
+            ratingLine="GOOGLE · FACEBOOK · INSTAGRAM"
             readout="Last ping"
             rings="Local;Regional;National;Global"
             style={{ width: "100%" }}
@@ -206,14 +206,14 @@ export default function App() {
             button="About us"
             buttonLink="/#team"
             buyersShare={12}
-            clusters="Search|312|searching “dentist near me”;Feeds|1,204|following #coffee;Audiences|88|lookalikes"
-            crowdLabel="people in the crowd"
+            clusters="Search|312|searching “café near me”;Feeds|1,204|following #perthfood;Audiences|88|lookalikes"
+            crowdLabel="locals near you"
             eyebrow="(01) Why Work360"
             facts="Founded 2026;Remote team;Serving Australia"
-            heading="Everyone is a crowd.|We find *your buyers*."
+            heading="Everyone is a|crowd. We find|*your brand*."
             ratioLabel="1 in"
             ratioTail="is your buyer"
-            subCopy="Most brands aren't invisible. They're talking to the wrong people. We find the searches, feeds and audiences where your buyers already are — and put you there."
+            subCopy="Most local businesses aren't invisible. They're just showing up in the wrong places. We find where your customers search, scroll and ask, and put you there."
             style={{ width: "100%" }}
           />
         </div>
@@ -222,7 +222,7 @@ export default function App() {
         <div id="services">
           <RwServices
             {...THEME_TOKENS}
-            adsHeadline="Free whitening with every new-patient visit"
+            adsHeadline="Free coffee with your first breakfast"
             articleTitle="How to rank #1 for “near me” searches"
             bpHint="auto"
             brandName="Kettlebrook"
@@ -235,8 +235,8 @@ export default function App() {
             hint="Scroll to switch channels, or pick one"
             includesLabel="What's included"
             intro="SEO, social, ads, content, web and brand under one retainer, one team and one monthly report."
-            seoQuery="dentist near me"
-            socialHandle="@kettlebrook.coffee"
+            seoQuery="cafe near me"
+            socialHandle="@yourcafe"
             webUrl="yoursite.com/offer"
             style={{ width: "100%" }}
           />
