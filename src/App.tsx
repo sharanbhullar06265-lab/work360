@@ -225,7 +225,7 @@ export default function App() {
             adsHeadline="Free coffee with your first breakfast"
             articleTitle="How to rank #1 for “near me” searches"
             bpHint="auto"
-            brandName="Kettlebrook"
+            brandName="yourcafe"
             button="All services"
             buttonLink="/#pricing"
             exploreLabel="Explore"
@@ -268,10 +268,10 @@ export default function App() {
             {...THEME_TOKENS}
             bpHint="auto"
             eyebrow="(04) How we work"
-            foot="A typical client funnel · last 90 days"
+            foot="A real client funnel · Perth farm stall · 28 days"
             heading="From attention|to *clients*."
-            intro="Every retainer runs the same four steps. You see the funnel fill in your report every week."
-            stages="Reach:1,284,300;Clicks:48,120;Leads:2,940;Clients:312"
+            intro="Every retainer runs the same four steps. You see the funnel fill in your report every month."
+            stages="Reach:390,229;Clicks:17,000;Leads:1,940;Clients:370"
             steps="Audit · Week 1: We study your site, ads and competitors and find the fastest wins.;Launch · Week 2–3: Campaigns, content and fixes go live.;Optimise · Month 2: We test creatives, keywords and pages every week.;Scale · Month 3+: We put more budget and content behind what works."
             style={{ width: "100%" }}
           />
@@ -282,16 +282,16 @@ export default function App() {
           <RwNumbers
             {...THEME_TOKENS}
             bpHint="auto"
-            deltaLabel="vs last year"
-            events="New lead · Haven Realty · 2 min ago;Call booked · Northside Dental · 6 min ago;Reel passed 48k views · Kettlebrook Coffee · 11 min ago;ROAS 6.4× today · Fitloop · 18 min ago;#1 for “skin clinic near me” · Lumen Skin · 26 min ago;5-star review · Orbit Legal · 34 min ago;New lead · Northside Dental · 41 min ago;212 new followers · Lumen Skin · 1 h ago"
+            deltaLabel="Still growing"
+            events="GOOGLE BUSINESS PROFILE;WEBSITES;SOCIAL MEDIA;ADS;BRANDING;PERTH, WA"
             eyebrow="(05) The numbers"
-            heading="What our clients|*got* last year."
-            intro="Every client gets this report each month. These are the averages across all of them."
-            kpis="212%:average organic growth:up;6.2×:return on ad spend:up;38M:people reached in 2025:up;140+:brands grown since 2016:up"
+            heading="Real results we *got*."
+            intro="Real Google numbers from a Perth client."
+            kpis="4,843+:people who viewed the profile:up;509+:profile interactions:up;295+:direction requests:up;189+:website clicks:up"
             liveLabel="Live"
-            months="Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec"
+            months="Start,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Now"
             range="Last 12 months"
-            reportLabel="Client report · 2025"
+            reportLabel="Client report · 2026"
             tabs="Overview, SEO, Social, Ads"
             style={{ width: "100%" }}
           />
@@ -306,9 +306,9 @@ export default function App() {
             buttonLink="/#services"
             eyebrow="(06) Content"
             heading="Content that|*stops the scroll.*"
-            posts="https://framerusercontent.com/images/xbfdpTvZzzafiJOwtXCs0luyp2I.webp|@kettlebrook.coffee|2418|post;https://framerusercontent.com/images/1DPklcMWo4iq1F5uWVjcytvrsc.webp|@lumenskin|8114|carousel|5;https://framerusercontent.com/images/yOk3vEq9TQ9CWpwuFmZY86mAVY.webp|@fitloop|3912|reel|48k;https://framerusercontent.com/images/s0jwUqVTFxGplLAwU0WLa8rbdw.webp|@parcel.co|5630|post;https://framerusercontent.com/images/YpYjh1duUyRdFMaCaQZ6JVDbmko.webp|@tallow.kitchen|1204|post;https://framerusercontent.com/images/HeKFyo7MfYy7GEQSGOPGXvhVHvo.webp|@brightline.run|9870|reel|112k;https://framerusercontent.com/images/oSWgZWTjPoakKUa7CvtJ6TXueP0.webp|@lumenskin|3307|carousel|3;https://framerusercontent.com/images/3nqFQlS1bXsh1PS74cijri0AhSM.webp|@verde.studio|1786|post;https://framerusercontent.com/images/yg9StsTkn2mS5VxfA3YnyrJNM1Q.webp|@haven.realty|2205|reel|21k;https://framerusercontent.com/images/mnE5eA5CunHm89doTbOt2H7pHdE.webp|@verde.studio|2874|carousel|4;https://framerusercontent.com/images/uYN9bcKFZFsqzLzQWUSswf4QIs.webp|@tallow.kitchen|2951|carousel|6;https://framerusercontent.com/images/eMqxq3byjv5ceZYESvRLuMWVug.webp|@parcel.co|3690|post;https://framerusercontent.com/images/xbfdpTvZzzafiJOwtXCs0luyp2I.webp|@kettlebrook.coffee|1932|post;https://framerusercontent.com/images/yOk3vEq9TQ9CWpwuFmZY86mAVY.webp|@fitloop|4480|reel|64k;https://framerusercontent.com/images/1DPklcMWo4iq1F5uWVjcytvrsc.webp|@lumenskin|2660|carousel|3;https://framerusercontent.com/images/3nqFQlS1bXsh1PS74cijri0AhSM.webp|@verde.studio|1540|post;https://framerusercontent.com/images/HeKFyo7MfYy7GEQSGOPGXvhVHvo.webp|@brightline.run|7120|reel|84k;https://framerusercontent.com/images/uYN9bcKFZFsqzLzQWUSswf4QIs.webp|@tallow.kitchen|2074|carousel|4"
+            posts="https://framerusercontent.com/images/xbfdpTvZzzafiJOwtXCs0luyp2I.webp|@yourcafe|2418|post;https://framerusercontent.com/images/1DPklcMWo4iq1F5uWVjcytvrsc.webp|@yourbeauty|8114|carousel|5;https://framerusercontent.com/images/yOk3vEq9TQ9CWpwuFmZY86mAVY.webp|@yourgym|3912|reel|48k;https://framerusercontent.com/images/s0jwUqVTFxGplLAwU0WLa8rbdw.webp|@yourbeachshop|5630|post;https://framerusercontent.com/images/YpYjh1duUyRdFMaCaQZ6JVDbmko.webp|@yourbakery|1204|post;https://framerusercontent.com/images/HeKFyo7MfYy7GEQSGOPGXvhVHvo.webp|@yourstore|9870|reel|112k;https://framerusercontent.com/images/oSWgZWTjPoakKUa7CvtJ6TXueP0.webp|@yourbeauty|3307|carousel|3;https://framerusercontent.com/images/3nqFQlS1bXsh1PS74cijri0AhSM.webp|@yourflorist|1786|post;https://framerusercontent.com/images/yg9StsTkn2mS5VxfA3YnyrJNM1Q.webp|@yourpetshop|2205|reel|21k;https://framerusercontent.com/images/mnE5eA5CunHm89doTbOt2H7pHdE.webp|@yourflorist|2874|carousel|4;https://framerusercontent.com/images/uYN9bcKFZFsqzLzQWUSswf4QIs.webp|@yourbakery|2951|carousel|6;https://framerusercontent.com/images/eMqxq3byjv5ceZYESvRLuMWVug.webp|@yourbeachshop|3690|post;https://framerusercontent.com/images/xbfdpTvZzzafiJOwtXCs0luyp2I.webp|@yourcafe|1932|post;https://framerusercontent.com/images/yOk3vEq9TQ9CWpwuFmZY86mAVY.webp|@yourgym|4480|reel|64k;https://framerusercontent.com/images/1DPklcMWo4iq1F5uWVjcytvrsc.webp|@yourbeauty|2660|carousel|3;https://framerusercontent.com/images/3nqFQlS1bXsh1PS74cijri0AhSM.webp|@yourflorist|1540|post;https://framerusercontent.com/images/HeKFyo7MfYy7GEQSGOPGXvhVHvo.webp|@yourstore|7120|reel|84k;https://framerusercontent.com/images/uYN9bcKFZFsqzLzQWUSswf4QIs.webp|@yourbakery|2074|carousel|4"
             reelLabel="views"
-            stats="4.1M views last month;38k saves;+212% reach"
+            stats="Reels;Carousels;Stories"
             subCopy="We plan, shoot, edit and post for our clients every week. Reels, carousels and stories made for how each platform actually works."
             style={{ width: "100%" }}
           />
@@ -325,7 +325,7 @@ export default function App() {
             heading="Specialists,|not *generalists*."
             linkedinLabel="LinkedIn"
             signalLabel="Specialists reached"
-            subCopy="Every account gets a senior lead for each channel you buy. No juniors learning on your budget, no hand-offs."
+            subCopy="One team for every channel you buy. One plan, one report, no hand-offs."
             style={{ width: "100%" }}
           />
         </div>
@@ -335,17 +335,17 @@ export default function App() {
           <RwReviews
             {...THEME_TOKENS}
             appName="Work360"
-            badges="Google 4.9;Clutch 5.0;G2 4.8"
+            badges="Facebook;34 in 1 hour;Perth, WA"
             bpHint="auto"
             button="Read case studies"
             buttonLink="/#work"
             clock="09:41"
             date="Tuesday, 29 September"
             eyebrow="Client reviews"
-            heading="Clients who|*stayed*."
-            rating=""
-            reviewsLabel="client reviews"
-            subCopy="Our average client has been with us for 3.4 years. These are the messages that land in our inbox when the numbers move."
+            heading="Real messages.|Real *growth*."
+            rating="1,499"
+            reviewsLabel="Followers for one client"
+            subCopy="These are real messages from our client when the numbers moved."
             times="now;2m ago;9m ago;26m ago;1h ago;3h ago"
             style={{ width: "100%" }}
           />
@@ -369,7 +369,7 @@ export default function App() {
             perMonth="/mo"
             quarterly="Quarterly"
             saveTag="−10%"
-            sub="Pick the channels you need. Every plan comes with a strategist, a live dashboard and plain-number reports."
+            sub="Pick the channels you need. Every plan comes with a strategist and a plain-number monthly report."
             style={{ width: "100%" }}
           />
         </div>
@@ -379,15 +379,16 @@ export default function App() {
           <RwFaq
             {...THEME_TOKENS}
             bpHint="auto"
-            button="Book a call"
-            cardBody="We look at your site, socials and ads live, and you keep the plan either way."
+            button="Get a free audit"
+            buttonLink="/#contact"
+            cardBody="We check your site, socials and ads, and send you a written plan. You keep it either way."
             cardLabel="Still unsure?"
-            cardTitle="Ask us on a free 30-minute call."
+            cardTitle="Get a free audit."
             emailLabel="Or write to"
             eyebrow="(09) FAQ"
             firstOpen={true}
             heading="Questions,|*answered*."
-            replyNote="We reply within 2 hours"
+            replyNote="We reply within 24 hours"
             style={{ width: "100%" }}
           />
         </div>
@@ -448,8 +449,8 @@ export default function App() {
           hint="Move over the name"
           layer={9}
           legal="Privacy:/#footer, Terms:/#footer, Cookies:/#footer"
-          madeWith="Made with Framer"
-          madeWithLink="https://www.framer.com"
+          madeWith="Built by Work360"
+          madeWithLink=""
           resources="Blog:/#blog, Pricing:/#pricing, FAQ:/#faq"
           resourcesTitle="Resources"
           reveal={false}
