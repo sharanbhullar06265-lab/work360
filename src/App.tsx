@@ -3,8 +3,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { CmsBridge } from "./cmsData";
+import LocalSeoPerthArticle from "./LocalSeoPerthArticle";
+import InstagramReelsArticle from "./InstagramReelsArticle";
+import FacebookAdsArticle from "./FacebookAdsArticle";
 import RwLoader from "./rw/RwLoader.jsx";
 import RwHeader from "./rw/RwHeader.jsx";
 import RwSmooth from "./rw/RwSmooth.jsx";
@@ -51,7 +54,72 @@ const THEME_TOKENS = {
   },
 };
 
+const normalizePath = (p: string) => p.replace(/\/+$/, "") || "/";
+
+const BLOG_ARTICLE_PATHS = new Set([
+  "/blog/local-seo-perth",
+  "/blog/instagram-reels-small-business",
+  "/blog/facebook-ads-small-business",
+]);
+
 export default function App() {
+  const [currentPath, setCurrentPath] = useState<string>(() =>
+    typeof window !== "undefined" ? normalizePath(window.location.pathname) : "/"
+  );
+  const [pendingScrollId, setPendingScrollId] = useState<string>(() => {
+    if (typeof window !== "undefined" && window.location.hash) {
+      return window.location.hash.replace(/^#/, "");
+    }
+    return "";
+  });
+
+  useEffect(() => {
+    const onPopState = () => {
+      const nextPath = normalizePath(window.location.pathname);
+      setCurrentPath(nextPath);
+      const hash = window.location.hash.replace(/^#/, "");
+      if (nextPath === "/" && hash) {
+        setPendingScrollId(hash);
+      } else if (BLOG_ARTICLE_PATHS.has(nextPath)) {
+        window.scrollTo(0, 0);
+        try {
+          (window as any).__ltLenis?.scrollTo?.(0, { immediate: true, force: true });
+        } catch {}
+      }
+    };
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, []);
+
+  useEffect(() => {
+    if (currentPath !== "/" || !pendingScrollId) return;
+    const targetId = pendingScrollId;
+    setPendingScrollId("");
+    const timer = window.setTimeout(() => {
+      try {
+        document.documentElement.style.overflow = "";
+        (window as any).__ltLenis?.start?.();
+      } catch {}
+      if (targetId === "__top__") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+      const resolvedId = targetId === "contact" ? "free-audit" : targetId;
+      const el = document.getElementById(resolvedId) || document.getElementById(targetId);
+      if (el) {
+        try {
+          const lenis = (window as any).__ltLenis || (window as any).__vcLenis || (window as any).lenis;
+          if (lenis && typeof lenis.scrollTo === "function") {
+            lenis.scrollTo(el, { offset: -20 });
+            return;
+          }
+        } catch {}
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 60);
+    return () => window.clearTimeout(timer);
+  }, [currentPath, pendingScrollId]);
+
   useEffect(() => {
     const handleLinkClick = (e: MouseEvent) => {
       if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) {
@@ -60,6 +128,7 @@ export default function App() {
       const target = e.target as HTMLElement | null;
       const anchor = target?.closest?.("a[href]") as HTMLAnchorElement | null;
       if (!anchor) return;
+      if (anchor.getAttribute("target") === "_blank") return;
 
       const rawHref = anchor.getAttribute("href") || "";
       if (!rawHref || /^(mailto|tel|sms|javascript):/i.test(rawHref)) return;
@@ -73,15 +142,36 @@ export default function App() {
 
       if (url.origin !== window.location.origin) return;
 
-      const path = url.pathname.replace(/\/+$/, "") || "/";
+      const path = normalizePath(url.pathname);
       const hash = url.hash.replace(/^#/, "");
+
+      if (BLOG_ARTICLE_PATHS.has(path)) {
+        e.preventDefault();
+        try {
+          document.documentElement.style.overflow = "";
+          (window as any).__ltLenis?.start?.();
+        } catch {}
+        window.history.pushState(null, "", path);
+        setCurrentPath(path);
+        window.scrollTo(0, 0);
+        try {
+          (window as any).__ltLenis?.scrollTo?.(0, { immediate: true, force: true });
+        } catch {}
+        return;
+      }
 
       let sectionId = "";
       if (hash) {
-        sectionId = hash;
+        sectionId = hash === "contact" ? "free-audit" : hash;
       } else if (path === "/") {
         e.preventDefault();
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        if (normalizePath(window.location.pathname) !== "/") {
+          window.history.pushState(null, "", "/");
+          setPendingScrollId("__top__");
+          setCurrentPath("/");
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
         return;
       } else if (path.startsWith("/services")) {
         sectionId = "services";
@@ -95,21 +185,39 @@ export default function App() {
         sectionId = "about";
       } else if (path.startsWith("/blog")) {
         sectionId = "blog";
-      } else if (path.startsWith("/contact") || path.startsWith("/careers")) {
-        sectionId = "contact";
+      } else if (path.startsWith("/contact") || path.startsWith("/careers") || path.startsWith("/free-audit")) {
+        sectionId = "free-audit";
       } else if (path.startsWith("/privacy") || path.startsWith("/terms") || path.startsWith("/cookies")) {
         sectionId = "footer";
       }
 
       if (sectionId) {
+        e.preventDefault();
+        try {
+          document.documentElement.style.overflow = "";
+          (window as any).__ltLenis?.start?.();
+        } catch {}
+        if (normalizePath(window.location.pathname) !== "/") {
+          window.history.pushState(null, "", `/#${sectionId}`);
+          setPendingScrollId(sectionId);
+          setCurrentPath("/");
+          return;
+        }
+        try {
+          window.history.replaceState(null, "", `/#${sectionId}`);
+        } catch {}
         const el = document.getElementById(sectionId);
         if (el) {
-          e.preventDefault();
-          try {
-            document.documentElement.style.overflow = "";
-            (window as any).__ltLenis?.start?.();
-          } catch {}
           requestAnimationFrame(() => {
+            try {
+              document.documentElement.style.overflow = "";
+              const lenis = (window as any).__ltLenis || (window as any).__vcLenis || (window as any).lenis;
+              if (lenis && typeof lenis.scrollTo === "function") {
+                lenis.start?.();
+                lenis.scrollTo(el, { offset: -20 });
+                return;
+              }
+            } catch {}
             el.scrollIntoView({ behavior: "smooth", block: "start" });
           });
         }
@@ -144,7 +252,8 @@ export default function App() {
         bpHint="auto"
         closeLabel="Close"
         contactLabel="Say hello"
-        ctaLabel="Book a call"
+        ctaLabel="Get a free audit"
+        ctaLink="/#free-audit"
         followLabel="Follow"
         links="Services:/#services, Work:/#work, Pricing:/#pricing, About:/#about, Blog:/#blog"
         menuLabel="Menu"
@@ -152,8 +261,21 @@ export default function App() {
         style={{ width: "100%" }}
       />
 
-      {/* Main 12-Section Homepage Flow */}
-      <main style={{ width: "100%", position: "relative", zIndex: 1 }}>
+      {/* Main 12-Section Homepage Flow or Blog Article Page */}
+      {currentPath === "/blog/local-seo-perth" ? (
+        <main style={{ width: "100%", position: "relative", zIndex: 1 }}>
+          <LocalSeoPerthArticle />
+        </main>
+      ) : currentPath === "/blog/instagram-reels-small-business" ? (
+        <main style={{ width: "100%", position: "relative", zIndex: 1 }}>
+          <InstagramReelsArticle />
+        </main>
+      ) : currentPath === "/blog/facebook-ads-small-business" ? (
+        <main style={{ width: "100%", position: "relative", zIndex: 1 }}>
+          <FacebookAdsArticle />
+        </main>
+      ) : (
+        <main style={{ width: "100%", position: "relative", zIndex: 1 }}>
         {/* Hero */}
         <div id="hero">
           <RwHero
@@ -167,12 +289,12 @@ export default function App() {
             focusY={50}
             heading="Get seen by|the *right crowd.*"
             hint="Move to reach · click to launch a campaign"
-            navCta="Book a call"
+            navCta="Get a free audit"
             navLinks="Services:/#services, Work:/#work, Pricing:/#pricing, About:/#about, Blog:/#blog"
-            primary="Book a strategy call"
-            primaryLink="/#contact"
+            primary="Get a free audit"
+            primaryLink="/#free-audit"
             secondary="Get a free audit"
-            secondaryLink="/#contact"
+            secondaryLink="/#free-audit"
             services="SEO, Social media, Paid ads, Content"
             showNav={false}
             subCopy="We get Australian small businesses seen on Google, social media and ads, and report every result in plain numbers."
@@ -358,6 +480,7 @@ export default function App() {
             billedM="Billed monthly · cancel anytime"
             billedQ="Billed every 3 months"
             bpHint="auto"
+            buttonLink="/#free-audit"
             compare="Compare plans"
             compareLink="/#faq"
             currency="$"
@@ -380,7 +503,7 @@ export default function App() {
             {...THEME_TOKENS}
             bpHint="auto"
             button="Get a free audit"
-            buttonLink="/#contact"
+            buttonLink="/#free-audit"
             cardBody="We check your site, socials and ads, and send you a written plan. You keep it either way."
             cardLabel="Still unsure?"
             cardTitle="Get a free audit."
@@ -400,7 +523,7 @@ export default function App() {
             bpHint="auto"
             button="All articles"
             buttonLink="/#contact"
-            chip="▲|2.4k reads this week"
+            chip="▲|PERTH TIPS"
             count={3}
             eyebrow="(10) Insights"
             heading="Ideas we|*test* first."
@@ -411,7 +534,7 @@ export default function App() {
         </div>
 
         {/* (11) Free Audit — Ready to be seen? */}
-        <div id="contact">
+        <div id="free-audit" style={{ scrollMarginTop: "80px" }}>
           <RwCta
             {...THEME_TOKENS}
             bpHint="auto"
@@ -423,17 +546,18 @@ export default function App() {
             emailPlaceholder="Work email"
             eyebrow="(11) Free audit"
             heading="Ready to be|*seen?*"
-            privacy="No spam. We reply within 2 hours."
+            privacy="No spam. We reply within 24 hours."
             spotsLeft={3}
-            spotsNote="New clients start on the 1st of each month"
-            spotsTitle="3 spots left for Q4"
+            spotsNote="Start any time"
+            spotsTitle="Taking new clients now"
             spotsTotal={8}
-            sub="Get a free 30-minute audit of your site, socials and ads. You keep the plan, whether we work together or not."
+            sub="Get a free audit of your site, socials and ads. We send you a written plan, and you keep it whether we work together or not."
             teamNote="A focused remote team"
             style={{ width: "100%" }}
           />
         </div>
       </main>
+      )}
 
       {/* Footer — Giant Interactive Work360 Wordmark */}
       <div id="footer">
@@ -441,9 +565,10 @@ export default function App() {
           {...THEME_TOKENS}
           blurb=""
           bpHint="auto"
-          button="Book a strategy call"
+          button="Get a free audit"
+          buttonLink="/#free-audit"
           clockLabel="Local time"
-          company="About:/#about, Work:/#work, Team:/#team, Careers:/#contact, Contact:/#contact"
+          company="About:/#about, Work:/#work, Team:/#team, Contact:/#free-audit"
           companyTitle="Company"
           contactTitle="Contact"
           hint="Move over the name"
