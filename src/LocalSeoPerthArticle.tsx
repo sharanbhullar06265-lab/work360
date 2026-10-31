@@ -75,10 +75,15 @@ const ARTICLE_CSS = `
   width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
+  object-position: center;
   display: block;
   border-radius: 20px;
   margin: 0 0 40px;
   background: color-mix(in srgb, var(--rw-stone) 22%, transparent);
+  filter: none;
+  -webkit-filter: none;
+  mix-blend-mode: normal;
+  image-rendering: auto;
 }
 .rwart-body {
   font-size: 18px;
@@ -200,8 +205,8 @@ export default function LocalSeoPerthArticle() {
         </h1>
 
         <img
-          src="https://framerusercontent.com/images/pHOBF7LHy4BbDr36flWPxPYRixo.webp?width=2000&height=1116"
-          alt="Local SEO in Perth: what still moves the Google map pack"
+          src="/assets/urlaubstracker-ZXgGLpUF8cg-unsplash.jpg"
+          alt="Perth city skyline and Elizabeth Quay"
           className="rwart-hero"
         />
 
