@@ -293,8 +293,8 @@ export default function App() {
             navLinks="Services:/#services, Work:/#work, Pricing:/#pricing, About:/#about, Blog:/#blog"
             primary="Get a free audit"
             primaryLink="/#free-audit"
-            secondary="Get a free audit"
-            secondaryLink="/#free-audit"
+            secondary="See real results"
+            secondaryLink="/#real-results"
             services="SEO, Social media, Paid ads, Content"
             showNav={false}
             subCopy="We get Australian small businesses seen on Google, social media and ads, and report every result in plain numbers."
@@ -303,7 +303,7 @@ export default function App() {
         </div>
 
         {/* (00) Clients — Radar */}
-        <div id="clients">
+        <div id="real-results" style={{ scrollMarginTop: "80px" }}>
           <RwClients
             {...THEME_TOKENS}
             bpHint="auto"
