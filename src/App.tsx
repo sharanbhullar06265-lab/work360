@@ -8,6 +8,7 @@ import { CmsBridge } from "./cmsData";
 import LocalSeoPerthArticle from "./LocalSeoPerthArticle";
 import InstagramReelsArticle from "./InstagramReelsArticle";
 import FacebookAdsArticle from "./FacebookAdsArticle";
+import { PrivacyPolicyPage, TermsConditionsPage, RefundPolicyPage } from "./LegalPages";
 import RwLoader from "./rw/RwLoader.jsx";
 import RwHeader from "./rw/RwHeader.jsx";
 import RwSmooth from "./rw/RwSmooth.jsx";
@@ -60,6 +61,9 @@ const BLOG_ARTICLE_PATHS = new Set([
   "/blog/local-seo-perth",
   "/blog/instagram-reels-small-business",
   "/blog/facebook-ads-small-business",
+  "/privacy",
+  "/terms",
+  "/refunds",
 ]);
 
 export default function App() {
@@ -187,8 +191,6 @@ export default function App() {
         sectionId = "blog";
       } else if (path.startsWith("/contact") || path.startsWith("/careers") || path.startsWith("/free-audit")) {
         sectionId = "free-audit";
-      } else if (path.startsWith("/privacy") || path.startsWith("/terms") || path.startsWith("/cookies")) {
-        sectionId = "footer";
       }
 
       if (sectionId) {
@@ -261,7 +263,7 @@ export default function App() {
         style={{ width: "100%" }}
       />
 
-      {/* Main 12-Section Homepage Flow or Blog Article Page */}
+      {/* Main 12-Section Homepage Flow or Subpage */}
       {currentPath === "/blog/local-seo-perth" ? (
         <main style={{ width: "100%", position: "relative", zIndex: 1 }}>
           <LocalSeoPerthArticle />
@@ -273,6 +275,18 @@ export default function App() {
       ) : currentPath === "/blog/facebook-ads-small-business" ? (
         <main style={{ width: "100%", position: "relative", zIndex: 1 }}>
           <FacebookAdsArticle />
+        </main>
+      ) : currentPath === "/privacy" ? (
+        <main style={{ width: "100%", position: "relative", zIndex: 1 }}>
+          <PrivacyPolicyPage />
+        </main>
+      ) : currentPath === "/terms" ? (
+        <main style={{ width: "100%", position: "relative", zIndex: 1 }}>
+          <TermsConditionsPage />
+        </main>
+      ) : currentPath === "/refunds" ? (
+        <main style={{ width: "100%", position: "relative", zIndex: 1 }}>
+          <RefundPolicyPage />
         </main>
       ) : (
         <main style={{ width: "100%", position: "relative", zIndex: 1 }}>
@@ -539,7 +553,7 @@ export default function App() {
             {...THEME_TOKENS}
             bpHint="auto"
             budgetLabel="Monthly budget"
-            budgets="Under $2k/mo, $2k–$5k/mo, $5k–$10k/mo, $10k+/mo"
+            budgets="Under $1,000/mo, $1,000–$2,000/mo, $2,000–$3,000/mo, $3,000+/mo"
             button="Get my free audit"
             cardLabel="Availability"
             clockLabel="Our time"
@@ -573,7 +587,7 @@ export default function App() {
           contactTitle="Contact"
           hint="Move over the name"
           layer={9}
-          legal="Privacy:/#footer, Terms:/#footer, Cookies:/#footer"
+          legal="Privacy:/privacy, Terms:/terms, Refunds:/refunds"
           madeWith="Built by Work360"
           madeWithLink=""
           resources="Blog:/#blog, Pricing:/#pricing, FAQ:/#faq"
