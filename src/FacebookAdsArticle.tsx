@@ -201,8 +201,12 @@ export default function FacebookAdsArticle() {
 
         <img
           src="https://framerusercontent.com/images/NtmyAnUBIcfQXkgdgwQGB2dIVY.webp?width=2000&height=1333"
+          srcSet="https://framerusercontent.com/images/NtmyAnUBIcfQXkgdgwQGB2dIVY.webp?scale-down-to=512 512w, https://framerusercontent.com/images/NtmyAnUBIcfQXkgdgwQGB2dIVY.webp?scale-down-to=1024 1024w, https://framerusercontent.com/images/NtmyAnUBIcfQXkgdgwQGB2dIVY.webp?width=2000&height=1333 2000w"
+          sizes="(max-width: 767px) 100vw, 720px"
           alt="ROAS is not profit: what to check in your Facebook ads"
           className="rwart-hero"
+          decoding="async"
+          fetchPriority="high"
         />
 
         <div className="rwart-body">

@@ -208,6 +208,8 @@ export default function LocalSeoPerthArticle() {
           src="/assets/urlaubstracker-ZXgGLpUF8cg-unsplash.jpg"
           alt="Perth city skyline and Elizabeth Quay"
           className="rwart-hero"
+          decoding="async"
+          fetchPriority="high"
         />
 
         <div className="rwart-body">

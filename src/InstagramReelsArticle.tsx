@@ -201,8 +201,12 @@ export default function InstagramReelsArticle() {
 
         <img
           src="https://framerusercontent.com/images/87wKn5rFSjsCMUA9My0OUYJ4dM.webp?width=1900&height=1200"
+          srcSet="https://framerusercontent.com/images/87wKn5rFSjsCMUA9My0OUYJ4dM.webp?scale-down-to=512 512w, https://framerusercontent.com/images/87wKn5rFSjsCMUA9My0OUYJ4dM.webp?scale-down-to=1024 1024w, https://framerusercontent.com/images/87wKn5rFSjsCMUA9My0OUYJ4dM.webp?width=1900&height=1200 1900w"
+          sizes="(max-width: 767px) 100vw, 720px"
           alt="Reels that sell: the 3-second rule for small businesses"
           className="rwart-hero"
+          decoding="async"
+          fetchPriority="high"
         />
 
         <div className="rwart-body">
