@@ -205,6 +205,7 @@ export default function FacebookAdsArticle() {
           sizes="(max-width: 767px) 100vw, 720px"
           alt="ROAS is not profit: what to check in your Facebook ads"
           className="rwart-hero"
+          loading="eager"
           decoding="async"
           fetchPriority="high"
         />

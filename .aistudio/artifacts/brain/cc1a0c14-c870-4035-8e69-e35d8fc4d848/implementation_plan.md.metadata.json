@@ -1,6 +1,0 @@
-{
-  "summary":  "Implementation plan for updating only the hero section (RwHero) with the 6 exact text, button, and rolling counter (0 to 360°) changes while keeping all styling, fonts, colours, animations, and other page sections untouched.",
-  "updatedAt":  "2026-10-29T09:57:35.675178677Z",
-  "requestFeedback":  true,
-  "userFacing":  true
-}

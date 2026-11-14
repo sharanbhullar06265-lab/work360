@@ -204,13 +204,21 @@ export default function LocalSeoPerthArticle() {
           Local SEO in Perth: what still moves the Google map pack
         </h1>
 
-        <img
-          src="/assets/urlaubstracker-ZXgGLpUF8cg-unsplash.jpg"
-          alt="Perth city skyline and Elizabeth Quay"
-          className="rwart-hero"
-          decoding="async"
-          fetchPriority="high"
-        />
+        <picture>
+          <source
+            type="image/webp"
+            srcSet="/assets/urlaubstracker-ZXgGLpUF8cg-unsplash-640w.webp 640w, /assets/urlaubstracker-ZXgGLpUF8cg-unsplash-1024w.webp 1024w, /assets/urlaubstracker-ZXgGLpUF8cg-unsplash-1920w.webp 1920w"
+            sizes="(max-width: 767px) 100vw, 720px"
+          />
+          <img
+            src="/assets/urlaubstracker-ZXgGLpUF8cg-unsplash.jpg"
+            alt="Perth city skyline and Elizabeth Quay"
+            className="rwart-hero"
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
+          />
+        </picture>
 
         <div className="rwart-body">
           <p>

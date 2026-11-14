@@ -205,6 +205,7 @@ export default function InstagramReelsArticle() {
           sizes="(max-width: 767px) 100vw, 720px"
           alt="Reels that sell: the 3-second rule for small businesses"
           className="rwart-hero"
+          loading="eager"
           decoding="async"
           fetchPriority="high"
         />

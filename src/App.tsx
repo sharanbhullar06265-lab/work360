@@ -20,7 +20,6 @@ import RwWork from "./rw/RwWork.jsx";
 import RwFunnel from "./rw/RwFunnel.jsx";
 import RwNumbers from "./rw/RwNumbers.jsx";
 import RwFeed from "./rw/RwFeed.jsx";
-import RwTeam from "./rw/RwTeam.jsx";
 import RwReviews from "./rw/RwReviews.jsx";
 import RwPricing from "./rw/RwPricing.jsx";
 import RwFaq from "./rw/RwFaq.jsx";
@@ -55,7 +54,68 @@ const THEME_TOKENS = {
   },
 };
 
-const normalizePath = (p: string) => p.replace(/\/+$/, "") || "/";
+export interface RouteMeta {
+  path: string;
+  title: string;
+  description: string;
+  canonical: string;
+}
+
+export const ROUTE_META: Record<string, RouteMeta> = {
+  "/": {
+    path: "/",
+    title: "Work360 Agency — Digital Marketing Agency",
+    description:
+      "Your Brand. Our 360° Approach. We help small businesses in Australia get found on Google, look great online and get more customers.",
+    canonical: "/",
+  },
+  "/blog/local-seo-perth": {
+    path: "/blog/local-seo-perth",
+    title: "Local SEO in Perth: how to show up on Google Maps",
+    description:
+      "A simple guide for Perth small businesses: what Google looks at for the map pack, with real profile numbers from a Perth farm stall.",
+    canonical: "/blog/local-seo-perth",
+  },
+  "/blog/instagram-reels-small-business": {
+    path: "/blog/instagram-reels-small-business",
+    title: "Instagram Reels for small business: the 3-second rule",
+    description:
+      "How to start an Instagram Reel so people keep watching. A simple plan for small businesses in Australia that you can film on your phone.",
+    canonical: "/blog/instagram-reels-small-business",
+  },
+  "/blog/facebook-ads-small-business": {
+    path: "/blog/facebook-ads-small-business",
+    title: "Facebook ads for small business in Australia: ROAS vs profit",
+    description:
+      "A 6x return on ad spend can still lose money. How Australian small businesses can check if their Facebook and Instagram ads really make a profit.",
+    canonical: "/blog/facebook-ads-small-business",
+  },
+  "/privacy": {
+    path: "/privacy",
+    title: "Privacy Policy | Work360 Agency",
+    description: "How Work360 Agency collects, uses and protects your information.",
+    canonical: "/privacy",
+  },
+  "/terms": {
+    path: "/terms",
+    title: "Terms & Conditions | Work360 Agency",
+    description: "The terms for using the Work360 Agency website and services.",
+    canonical: "/terms",
+  },
+  "/refunds": {
+    path: "/refunds",
+    title: "Refund Policy | Work360 Agency",
+    description: "When Work360 Agency gives refunds for monthly services and projects.",
+    canonical: "/refunds",
+  },
+};
+
+export const normalizePath = (p: string) =>
+  p
+    .split(/[?#]/)[0]
+    .replace(/\/index\.html$/i, "")
+    .replace(/\.html$/i, "")
+    .replace(/\/+$/, "") || "/";
 
 const BLOG_ARTICLE_PATHS = new Set([
   "/blog/local-seo-perth",
@@ -66,9 +126,11 @@ const BLOG_ARTICLE_PATHS = new Set([
   "/refunds",
 ]);
 
-export default function App() {
+export default function App({ initialPath }: { initialPath?: string }) {
   const [currentPath, setCurrentPath] = useState<string>(() =>
-    typeof window !== "undefined" ? normalizePath(window.location.pathname) : "/"
+    normalizePath(
+      initialPath ?? (typeof window !== "undefined" ? window.location.pathname : "/")
+    )
   );
   const [pendingScrollId, setPendingScrollId] = useState<string>(() => {
     if (typeof window !== "undefined" && window.location.hash) {
@@ -76,6 +138,24 @@ export default function App() {
     }
     return "";
   });
+
+  useEffect(() => {
+    const meta = ROUTE_META[currentPath] || ROUTE_META["/"];
+    document.title = meta.title;
+    const descMeta = document.querySelector('meta[name="description"]');
+    if (descMeta) descMeta.setAttribute("content", meta.description);
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute("content", meta.title);
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute("content", meta.description);
+    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.setAttribute("rel", "canonical");
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute("href", meta.canonical);
+  }, [currentPath]);
 
   useEffect(() => {
     const onPopState = () => {
@@ -183,8 +263,6 @@ export default function App() {
         sectionId = "work";
       } else if (path.startsWith("/pricing")) {
         sectionId = "pricing";
-      } else if (path.startsWith("/team")) {
-        sectionId = "team";
       } else if (path.startsWith("/about")) {
         sectionId = "about";
       } else if (path.startsWith("/blog")) {
@@ -450,22 +528,6 @@ export default function App() {
           />
         </div>
 
-        {/* (07) Team — Staggered Specialists Radar */}
-        <div id="team">
-          <RwTeam
-            {...THEME_TOKENS}
-            bpHint="auto"
-            button="Meet the team"
-            buttonLink="/#contact"
-            eyebrow="(07) Team"
-            heading="Specialists,|not *generalists*."
-            linkedinLabel="LinkedIn"
-            signalLabel="Specialists reached"
-            subCopy="One team for every channel you buy. One plan, one report, no hand-offs."
-            style={{ width: "100%" }}
-          />
-        </div>
-
         {/* Client Reviews — iPhone Lockscreen Notifications */}
         <div id="reviews">
           <RwReviews
@@ -487,7 +549,7 @@ export default function App() {
           />
         </div>
 
-        {/* (08) Pricing — Monthly / Quarterly Retainers */}
+        {/* (07) Pricing — Monthly / Quarterly Retainers */}
         <div id="pricing">
           <RwPricing
             {...THEME_TOKENS}
@@ -498,7 +560,7 @@ export default function App() {
             compare="Compare plans"
             compareLink="/#faq"
             currency="$"
-            eyebrow="(08) Pricing"
+            eyebrow="(07) Pricing"
             featuredChip="Most picked"
             heading="Simple monthly|*retainers*."
             monthly="Monthly"
@@ -511,7 +573,7 @@ export default function App() {
           />
         </div>
 
-        {/* (09) FAQ — Accordion with Vertical Progress Track */}
+        {/* (08) FAQ — Accordion with Vertical Progress Track */}
         <div id="faq">
           <RwFaq
             {...THEME_TOKENS}
@@ -522,7 +584,7 @@ export default function App() {
             cardLabel="Still unsure?"
             cardTitle="Get a free audit."
             emailLabel="Or write to"
-            eyebrow="(09) FAQ"
+            eyebrow="(08) FAQ"
             firstOpen={true}
             heading="Questions,|*answered*."
             replyNote="We reply within 24 hours"
@@ -530,7 +592,7 @@ export default function App() {
           />
         </div>
 
-        {/* (10) Insights — Featured + 2 Editorial Rows */}
+        {/* (09) Insights — Featured + 2 Editorial Rows */}
         <div id="blog">
           <RwJournal
             {...THEME_TOKENS}
@@ -539,7 +601,7 @@ export default function App() {
             buttonLink="/#contact"
             chip="▲|PERTH TIPS"
             count={3}
-            eyebrow="(10) Insights"
+            eyebrow="(09) Insights"
             heading="Ideas we|*test* first."
             readSuffix="read"
             sub="What we learn running campaigns every week, written up so you can use it too."
@@ -547,7 +609,7 @@ export default function App() {
           />
         </div>
 
-        {/* (11) Free Audit — Ready to be seen? */}
+        {/* (10) Free Audit — Ready to be seen? */}
         <div id="free-audit" style={{ scrollMarginTop: "80px" }}>
           <RwCta
             {...THEME_TOKENS}
@@ -558,7 +620,7 @@ export default function App() {
             cardLabel="Availability"
             clockLabel="Our time"
             emailPlaceholder="Work email"
-            eyebrow="(11) Free audit"
+            eyebrow="(10) Free audit"
             heading="Ready to be|*seen?*"
             privacy="No spam. We reply within 24 hours."
             spotsLeft={3}
@@ -582,7 +644,7 @@ export default function App() {
           button="Get a free audit"
           buttonLink="/#free-audit"
           clockLabel="Local time"
-          company="About:/#about, Work:/#work, Team:/#team, Contact:/#free-audit"
+          company="About:/#about, Work:/#work, Contact:/#free-audit"
           companyTitle="Company"
           contactTitle="Contact"
           hint="Move over the name"
