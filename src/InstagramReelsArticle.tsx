@@ -143,42 +143,6 @@ export default function InstagramReelsArticle() {
     try {
       (window as any).__ltLenis?.scrollTo?.(0, { immediate: true, force: true });
     } catch {}
-
-    const prevTitle = document.title;
-    document.title = "Instagram Reels for small business: the 3-second rule";
-
-    const descMeta = document.querySelector('meta[name="description"]');
-    const prevDesc = descMeta?.getAttribute("content") || "";
-    if (descMeta) {
-      descMeta.setAttribute(
-        "content",
-        "How to start an Instagram Reel so people keep watching. A simple plan for small businesses in Australia that you can film on your phone."
-      );
-    }
-
-    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-    const createdCanonical = !canonical;
-    const prevCanonicalHref = canonical?.getAttribute("href") || "";
-    if (!canonical) {
-      canonical = document.createElement("link");
-      canonical.setAttribute("rel", "canonical");
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute("href", "/blog/instagram-reels-small-business");
-
-    return () => {
-      document.title = prevTitle;
-      if (descMeta) {
-        descMeta.setAttribute("content", prevDesc);
-      }
-      if (canonical) {
-        if (createdCanonical) {
-          canonical.remove();
-        } else {
-          canonical.setAttribute("href", prevCanonicalHref);
-        }
-      }
-    };
   }, []);
 
   return (

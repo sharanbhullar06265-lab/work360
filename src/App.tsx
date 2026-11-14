@@ -4,11 +4,11 @@
  */
 
 import { useEffect, useState } from "react";
-import { CmsBridge } from "./cmsData";
+import { CmsBridge, CMS_ROWS } from "./cmsData";
 import LocalSeoPerthArticle from "./LocalSeoPerthArticle";
 import InstagramReelsArticle from "./InstagramReelsArticle";
 import FacebookAdsArticle from "./FacebookAdsArticle";
-import { PrivacyPolicyPage, TermsConditionsPage, RefundPolicyPage } from "./LegalPages";
+import { PrivacyPolicyPage, TermsConditionsPage, RefundPolicyPage, NotFoundPage } from "./LegalPages";
 import RwLoader from "./rw/RwLoader.jsx";
 import RwHeader from "./rw/RwHeader.jsx";
 import RwSmooth from "./rw/RwSmooth.jsx";
@@ -54,12 +54,88 @@ const THEME_TOKENS = {
   },
 };
 
+export const SITE_ORIGIN = "https://work360agency.com";
+export const LOGO_URL = `${SITE_ORIGIN}/assets/aistudio/IMG_8905-removebg-preview_601fd317.png`;
+export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/assets/aistudio/Your_Brand._Our_Creative_Spark_4dc684be.png`;
+
+const MONTH_MAP: Record<string, string> = {
+  jan: "01",
+  feb: "02",
+  mar: "03",
+  apr: "04",
+  may: "05",
+  jun: "06",
+  jul: "07",
+  aug: "08",
+  sep: "09",
+  oct: "10",
+  nov: "11",
+  dec: "12",
+};
+
+function getPostIsoDate(slug: string): string {
+  const row = CMS_ROWS.find((r) => r["rw-row"] === "posts" && r.slug === slug);
+  const raw = row?.f3?.trim() || "";
+  const m = raw.match(/^([A-Za-z]{3})\s+(\d{1,2}),\s*(\d{4})$/);
+  if (m) {
+    const mm = MONTH_MAP[m[1].toLowerCase()] || "01";
+    const dd = m[2].padStart(2, "0");
+    return `${m[3]}-${mm}-${dd}`;
+  }
+  return "2026-10-31";
+}
+
+function makeBlogPostingJsonLd(opts: {
+  headline: string;
+  description: string;
+  canonical: string;
+  image: string;
+  datePublished: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: opts.headline,
+    description: opts.description,
+    url: opts.canonical,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": opts.canonical,
+    },
+    image: opts.image,
+    datePublished: opts.datePublished,
+    author: {
+      "@type": "Organization",
+      name: "Work360 Agency",
+      url: SITE_ORIGIN,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Work360 Agency",
+      url: SITE_ORIGIN,
+      logo: {
+        "@type": "ImageObject",
+        url: LOGO_URL,
+      },
+    },
+  };
+}
+
 export interface RouteMeta {
   path: string;
   title: string;
   description: string;
   canonical: string;
+  ogImage: string;
+  ogType: "website" | "article";
+  lastmod?: string;
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown>;
 }
+
+const localSeoDate = getPostIsoDate("local-seo-perth");
+const reelsDate = getPostIsoDate("instagram-reels-small-business");
+const fbAdsDate = getPostIsoDate("facebook-ads-small-business");
 
 export const ROUTE_META: Record<string, RouteMeta> = {
   "/": {
@@ -67,47 +143,117 @@ export const ROUTE_META: Record<string, RouteMeta> = {
     title: "Work360 Agency — Digital Marketing Agency",
     description:
       "Your Brand. Our 360° Approach. We help small businesses in Australia get found on Google, look great online and get more customers.",
-    canonical: "/",
+    canonical: `${SITE_ORIGIN}/`,
+    ogImage: DEFAULT_OG_IMAGE,
+    ogType: "website",
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      name: "Work360 Agency",
+      url: SITE_ORIGIN,
+      logo: LOGO_URL,
+      image: LOGO_URL,
+      description:
+        "Your Brand. Our 360° Approach. We help small businesses in Australia get found on Google, look great online and get more customers.",
+      areaServed: ["Perth, Western Australia", "Australia"],
+      sameAs: [
+        "https://www.instagram.com/work360agency",
+        "https://www.facebook.com/work360agency",
+        "https://www.linkedin.com/company/work360agency",
+      ],
+    },
   },
   "/blog/local-seo-perth": {
     path: "/blog/local-seo-perth",
     title: "Local SEO in Perth: how to show up on Google Maps",
     description:
       "A simple guide for Perth small businesses: what Google looks at for the map pack, with real profile numbers from a Perth farm stall.",
-    canonical: "/blog/local-seo-perth",
+    canonical: `${SITE_ORIGIN}/blog/local-seo-perth`,
+    ogImage: `${SITE_ORIGIN}/assets/urlaubstracker-ZXgGLpUF8cg-unsplash.jpg`,
+    ogType: "article",
+    lastmod: localSeoDate,
+    jsonLd: makeBlogPostingJsonLd({
+      headline: "Local SEO in Perth: what still moves the Google map pack",
+      description:
+        "A simple guide for Perth small businesses: what Google looks at for the map pack, with real profile numbers from a Perth farm stall.",
+      canonical: `${SITE_ORIGIN}/blog/local-seo-perth`,
+      image: `${SITE_ORIGIN}/assets/urlaubstracker-ZXgGLpUF8cg-unsplash.jpg`,
+      datePublished: localSeoDate,
+    }),
   },
   "/blog/instagram-reels-small-business": {
     path: "/blog/instagram-reels-small-business",
     title: "Instagram Reels for small business: the 3-second rule",
     description:
       "How to start an Instagram Reel so people keep watching. A simple plan for small businesses in Australia that you can film on your phone.",
-    canonical: "/blog/instagram-reels-small-business",
+    canonical: `${SITE_ORIGIN}/blog/instagram-reels-small-business`,
+    ogImage: "https://framerusercontent.com/images/87wKn5rFSjsCMUA9My0OUYJ4dM.webp?width=1900&height=1200",
+    ogType: "article",
+    lastmod: reelsDate,
+    jsonLd: makeBlogPostingJsonLd({
+      headline: "Reels that sell: the 3-second rule for small businesses",
+      description:
+        "How to start an Instagram Reel so people keep watching. A simple plan for small businesses in Australia that you can film on your phone.",
+      canonical: `${SITE_ORIGIN}/blog/instagram-reels-small-business`,
+      image: "https://framerusercontent.com/images/87wKn5rFSjsCMUA9My0OUYJ4dM.webp?width=1900&height=1200",
+      datePublished: reelsDate,
+    }),
   },
   "/blog/facebook-ads-small-business": {
     path: "/blog/facebook-ads-small-business",
     title: "Facebook ads for small business in Australia: ROAS vs profit",
     description:
       "A 6x return on ad spend can still lose money. How Australian small businesses can check if their Facebook and Instagram ads really make a profit.",
-    canonical: "/blog/facebook-ads-small-business",
+    canonical: `${SITE_ORIGIN}/blog/facebook-ads-small-business`,
+    ogImage: "https://framerusercontent.com/images/NtmyAnUBIcfQXkgdgwQGB2dIVY.webp?width=2000&height=1333",
+    ogType: "article",
+    lastmod: fbAdsDate,
+    jsonLd: makeBlogPostingJsonLd({
+      headline: "ROAS is not profit: what to check in your Facebook ads",
+      description:
+        "A 6x return on ad spend can still lose money. How Australian small businesses can check if their Facebook and Instagram ads really make a profit.",
+      canonical: `${SITE_ORIGIN}/blog/facebook-ads-small-business`,
+      image: "https://framerusercontent.com/images/NtmyAnUBIcfQXkgdgwQGB2dIVY.webp?width=2000&height=1333",
+      datePublished: fbAdsDate,
+    }),
   },
   "/privacy": {
     path: "/privacy",
     title: "Privacy Policy | Work360 Agency",
     description: "How Work360 Agency collects, uses and protects your information.",
-    canonical: "/privacy",
+    canonical: `${SITE_ORIGIN}/privacy`,
+    ogImage: DEFAULT_OG_IMAGE,
+    ogType: "website",
+    lastmod: "2026-10-31",
   },
   "/terms": {
     path: "/terms",
     title: "Terms & Conditions | Work360 Agency",
     description: "The terms for using the Work360 Agency website and services.",
-    canonical: "/terms",
+    canonical: `${SITE_ORIGIN}/terms`,
+    ogImage: DEFAULT_OG_IMAGE,
+    ogType: "website",
+    lastmod: "2026-10-31",
   },
   "/refunds": {
     path: "/refunds",
     title: "Refund Policy | Work360 Agency",
     description: "When Work360 Agency gives refunds for monthly services and projects.",
-    canonical: "/refunds",
+    canonical: `${SITE_ORIGIN}/refunds`,
+    ogImage: DEFAULT_OG_IMAGE,
+    ogType: "website",
+    lastmod: "2026-10-31",
   },
+};
+
+export const NOT_FOUND_META: RouteMeta = {
+  path: "/404",
+  title: "Page not found | Work360 Agency",
+  description: "Sorry, we can't find that page. The link may be old or typed wrong.",
+  canonical: `${SITE_ORIGIN}/404`,
+  ogImage: DEFAULT_OG_IMAGE,
+  ogType: "website",
+  noindex: true,
 };
 
 export const normalizePath = (p: string) =>
@@ -140,21 +286,83 @@ export default function App({ initialPath }: { initialPath?: string }) {
   });
 
   useEffect(() => {
-    const meta = ROUTE_META[currentPath] || ROUTE_META["/"];
+    if (typeof window !== "undefined") {
+      const rawPath = window.location.pathname;
+      const clean = normalizePath(rawPath);
+      if (rawPath !== clean && ROUTE_META[clean]) {
+        try {
+          window.history.replaceState(null, "", `${clean}${window.location.search}${window.location.hash}`);
+        } catch {}
+      }
+    }
+
+    const meta = ROUTE_META[currentPath] || NOT_FOUND_META;
     document.title = meta.title;
+
     const descMeta = document.querySelector('meta[name="description"]');
     if (descMeta) descMeta.setAttribute("content", meta.description);
+
     const ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle) ogTitle.setAttribute("content", meta.title);
+
     const ogDesc = document.querySelector('meta[property="og:description"]');
     if (ogDesc) ogDesc.setAttribute("content", meta.description);
-    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+
+    const ogType = document.querySelector('meta[property="og:type"]');
+    if (ogType) ogType.setAttribute("content", meta.ogType);
+
+    let ogUrl = document.querySelector('meta[property="og:url"]') as HTMLMetaElement | null;
+    if (!ogUrl) {
+      ogUrl = document.createElement("meta");
+      ogUrl.setAttribute("property", "og:url");
+      document.head.appendChild(ogUrl);
+    }
+    ogUrl.setAttribute("content", meta.canonical);
+
+    let ogImage = document.querySelector('meta[property="og:image"]') as HTMLMetaElement | null;
+    if (!ogImage) {
+      ogImage = document.createElement("meta");
+      ogImage.setAttribute("property", "og:image");
+      document.head.appendChild(ogImage);
+    }
+    ogImage.setAttribute("content", meta.ogImage);
+
+    const allCanonicals = document.querySelectorAll('link[rel="canonical"]');
+    let canonical = allCanonicals[0] as HTMLLinkElement | undefined;
+    for (let i = 1; i < allCanonicals.length; i++) {
+      allCanonicals[i].remove();
+    }
     if (!canonical) {
       canonical = document.createElement("link");
       canonical.setAttribute("rel", "canonical");
       document.head.appendChild(canonical);
     }
     canonical.setAttribute("href", meta.canonical);
+
+    let robotsMeta = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
+    if (meta.noindex) {
+      if (!robotsMeta) {
+        robotsMeta = document.createElement("meta");
+        robotsMeta.setAttribute("name", "robots");
+        document.head.appendChild(robotsMeta);
+      }
+      robotsMeta.setAttribute("content", "noindex");
+    } else if (robotsMeta) {
+      robotsMeta.remove();
+    }
+
+    let jsonLdEl = document.getElementById("rw-jsonld") as HTMLScriptElement | null;
+    if (meta.jsonLd) {
+      if (!jsonLdEl) {
+        jsonLdEl = document.createElement("script");
+        jsonLdEl.id = "rw-jsonld";
+        jsonLdEl.type = "application/ld+json";
+        document.head.appendChild(jsonLdEl);
+      }
+      jsonLdEl.textContent = JSON.stringify(meta.jsonLd);
+    } else if (jsonLdEl) {
+      jsonLdEl.remove();
+    }
   }, [currentPath]);
 
   useEffect(() => {
@@ -365,6 +573,10 @@ export default function App({ initialPath }: { initialPath?: string }) {
       ) : currentPath === "/refunds" ? (
         <main style={{ width: "100%", position: "relative", zIndex: 1 }}>
           <RefundPolicyPage />
+        </main>
+      ) : currentPath !== "/" ? (
+        <main style={{ width: "100%", position: "relative", zIndex: 1 }}>
+          <NotFoundPage />
         </main>
       ) : (
         <main style={{ width: "100%", position: "relative", zIndex: 1 }}>

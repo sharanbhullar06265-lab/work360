@@ -102,46 +102,125 @@ const LEGAL_CSS = `
 .rwart-body a:hover {
   opacity: 0.75;
 }
+.rwart-404-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 28px;
+}
+.rwart-btn-solid.rw-btn {
+  --face: var(--rw-brass);
+  --rim: transparent;
+  --fill: var(--rw-ink);
+  --fg: var(--rw-ink);
+  --fg2: var(--rw-bone);
+  --chip: var(--rw-ink);
+  --chipfg: var(--rw-brass);
+  --chip2: var(--rw-brass);
+  --chipfg2: var(--rw-ink);
+  --ring: var(--rw-bone);
+}
+.rwart-btn-ghost.rw-btn {
+  --face: var(--rw-cloud);
+  --rim: color-mix(in srgb, var(--rw-ink) 18%, transparent);
+  --fill: var(--rw-ink);
+  --fg: var(--rw-ink);
+  --fg2: var(--rw-bone);
+  --chip: var(--rw-ink);
+  --chipfg: var(--rw-bone);
+  --chip2: var(--rw-brass);
+  --chipfg2: var(--rw-ink);
+  --ring: var(--rw-bone);
+}
 `;
 
-function usePageMeta(title: string, description: string, canonicalPath: string) {
+function usePageMeta(_title: string, _description: string, _canonicalPath: string) {
   useEffect(() => {
     window.scrollTo(0, 0);
     try {
       (window as any).__ltLenis?.scrollTo?.(0, { immediate: true, force: true });
     } catch {}
+  }, []);
+}
 
-    document.title = title;
+export function NotFoundPage() {
+  usePageMeta(
+    "Page not found | Work360 Agency",
+    "Sorry, we can't find that page. The link may be old or typed wrong.",
+    "/404"
+  );
 
-    const descMeta = document.querySelector('meta[name="description"]');
-    if (descMeta) {
-      descMeta.setAttribute("content", description);
-    }
+  return (
+    <article className="rw rwart">
+      <style dangerouslySetInnerHTML={{ __html: LEGAL_CSS }} />
+      <div className="rwart-col">
+        <p className="rwart-meta">
+          <span>404 · PAGE NOT FOUND</span>
+        </p>
 
-    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-    const createdCanonical = !canonical;
-    const prevCanonicalHref = canonical?.getAttribute("href") || "";
-    if (!canonical) {
-      canonical = document.createElement("link");
-      canonical.setAttribute("rel", "canonical");
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute("href", canonicalPath);
+        <h1 className="rwart-h1">Sorry, we can&apos;t find that page.</h1>
 
-    return () => {
-      document.title = HOME_TITLE;
-      if (descMeta) {
-        descMeta.setAttribute("content", HOME_DESC);
-      }
-      if (canonical) {
-        if (createdCanonical) {
-          canonical.remove();
-        } else {
-          canonical.setAttribute("href", prevCanonicalHref);
-        }
-      }
-    };
-  }, [title, description, canonicalPath]);
+        <div className="rwart-body">
+          <p>The link may be old or typed wrong.</p>
+
+          <div className="rwart-404-actions">
+            <a href="/" className="rw-btn rw-solid rwart-btn-solid">
+              <span className="rw-face">
+                <span className="rw-fill" aria-hidden="true" />
+                <span className="rw-lbl">
+                  <span className="rw-roll">
+                    <span className="rw-l1">Go to the homepage</span>
+                    <span className="rw-l2" aria-hidden="true">
+                      Go to the homepage
+                    </span>
+                  </span>
+                </span>
+                <span className="rw-arr" aria-hidden="true">
+                  <span className="rw-a1">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M7 17L17 7M9 7h8v8" />
+                    </svg>
+                  </span>
+                  <span className="rw-a2">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M7 17L17 7M9 7h8v8" />
+                    </svg>
+                  </span>
+                </span>
+              </span>
+            </a>
+
+            <a href="/#free-audit" className="rw-btn rw-ghost rwart-btn-ghost">
+              <span className="rw-face">
+                <span className="rw-fill" aria-hidden="true" />
+                <span className="rw-lbl">
+                  <span className="rw-roll">
+                    <span className="rw-l1">Get a free audit</span>
+                    <span className="rw-l2" aria-hidden="true">
+                      Get a free audit
+                    </span>
+                  </span>
+                </span>
+                <span className="rw-arr" aria-hidden="true">
+                  <span className="rw-a1">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M7 17L17 7M9 7h8v8" />
+                    </svg>
+                  </span>
+                  <span className="rw-a2">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M7 17L17 7M9 7h8v8" />
+                    </svg>
+                  </span>
+                </span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+  );
 }
 
 export function PrivacyPolicyPage() {

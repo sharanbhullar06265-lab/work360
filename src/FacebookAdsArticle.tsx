@@ -143,42 +143,6 @@ export default function FacebookAdsArticle() {
     try {
       (window as any).__ltLenis?.scrollTo?.(0, { immediate: true, force: true });
     } catch {}
-
-    const prevTitle = document.title;
-    document.title = "Facebook ads for small business in Australia: ROAS vs profit";
-
-    const descMeta = document.querySelector('meta[name="description"]');
-    const prevDesc = descMeta?.getAttribute("content") || "";
-    if (descMeta) {
-      descMeta.setAttribute(
-        "content",
-        "A 6x return on ad spend can still lose money. How Australian small businesses can check if their Facebook and Instagram ads really make a profit."
-      );
-    }
-
-    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-    const createdCanonical = !canonical;
-    const prevCanonicalHref = canonical?.getAttribute("href") || "";
-    if (!canonical) {
-      canonical = document.createElement("link");
-      canonical.setAttribute("rel", "canonical");
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute("href", "/blog/facebook-ads-small-business");
-
-    return () => {
-      document.title = prevTitle;
-      if (descMeta) {
-        descMeta.setAttribute("content", prevDesc);
-      }
-      if (canonical) {
-        if (createdCanonical) {
-          canonical.remove();
-        } else {
-          canonical.setAttribute("href", prevCanonicalHref);
-        }
-      }
-    };
   }, []);
 
   return (

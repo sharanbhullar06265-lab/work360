@@ -148,42 +148,6 @@ export default function LocalSeoPerthArticle() {
     try {
       (window as any).__ltLenis?.scrollTo?.(0, { immediate: true, force: true });
     } catch {}
-
-    const prevTitle = document.title;
-    document.title = "Local SEO in Perth: how to show up on Google Maps";
-
-    const descMeta = document.querySelector('meta[name="description"]');
-    const prevDesc = descMeta?.getAttribute("content") || "";
-    if (descMeta) {
-      descMeta.setAttribute(
-        "content",
-        "A simple guide for Perth small businesses: what Google looks at for the map pack, with real profile numbers from a Perth farm stall."
-      );
-    }
-
-    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-    const createdCanonical = !canonical;
-    const prevCanonicalHref = canonical?.getAttribute("href") || "";
-    if (!canonical) {
-      canonical = document.createElement("link");
-      canonical.setAttribute("rel", "canonical");
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute("href", "/blog/local-seo-perth");
-
-    return () => {
-      document.title = prevTitle;
-      if (descMeta) {
-        descMeta.setAttribute("content", prevDesc);
-      }
-      if (canonical) {
-        if (createdCanonical) {
-          canonical.remove();
-        } else {
-          canonical.setAttribute("href", prevCanonicalHref);
-        }
-      }
-    };
   }, []);
 
   return (
