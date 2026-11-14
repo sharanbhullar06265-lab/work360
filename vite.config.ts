@@ -40,8 +40,7 @@ function devSsrPrerender(): Plugin {
           return next();
         }
 
-        const [rawPathname, rawQuery] = req.url.split('?');
-        const querySuffix = rawQuery ? `?${rawQuery}` : '';
+        const [rawPathname] = req.url.split('?');
 
         // Serve robots.txt explicitly as text/plain
         if (rawPathname === '/robots.txt') {
@@ -77,33 +76,6 @@ function devSsrPrerender(): Plugin {
           )
         ) {
           return next();
-        }
-
-        // 301 Redirects for .html and trailing slash variants on page routes
-        if (rawPathname === '/index.html') {
-          res.statusCode = 301;
-          res.setHeader('Location', `/${querySuffix}`);
-          res.end();
-          return;
-        }
-
-        if (
-          rawPathname.length > 1 &&
-          (/\/index\.html$/i.test(rawPathname) ||
-            /\.html$/i.test(rawPathname) ||
-            /\/+$/.test(rawPathname))
-        ) {
-          const clean =
-            rawPathname
-              .replace(/\/index\.html$/i, '')
-              .replace(/\.html$/i, '')
-              .replace(/\/+$/, '') || '/';
-          if (VALID_ROUTES.has(clean)) {
-            res.statusCode = 301;
-            res.setHeader('Location', `${clean}${querySuffix}`);
-            res.end();
-            return;
-          }
         }
 
         const normalized =

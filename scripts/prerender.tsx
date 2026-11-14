@@ -120,13 +120,16 @@ function runPrerender() {
       console.log(`Pre-rendered: / -> dist/index.html`);
     } else {
       const cleanRoute = meta.path.replace(/^\/+/, '');
-      const routeDir = path.join(distDir, cleanRoute);
-      fs.mkdirSync(routeDir, { recursive: true });
+      const duplicateFolder = path.join(distDir, cleanRoute);
+      if (fs.existsSync(duplicateFolder) && fs.statSync(duplicateFolder).isDirectory()) {
+        fs.rmSync(duplicateFolder, { recursive: true, force: true });
+      }
 
-      const indexFilePath = path.join(routeDir, 'index.html');
-      fs.writeFileSync(indexFilePath, renderedHtml, 'utf-8');
+      const flatFilePath = path.join(distDir, `${cleanRoute}.html`);
+      fs.mkdirSync(path.dirname(flatFilePath), { recursive: true });
+      fs.writeFileSync(flatFilePath, renderedHtml, 'utf-8');
 
-      console.log(`Pre-rendered: ${meta.path} -> dist/${cleanRoute}/index.html`);
+      console.log(`Pre-rendered: ${meta.path} -> dist/${cleanRoute}.html`);
     }
   }
 
