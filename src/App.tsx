@@ -8,6 +8,7 @@ import { CmsBridge, CMS_ROWS } from "./cmsData";
 import LocalSeoPerthArticle from "./LocalSeoPerthArticle";
 import InstagramReelsArticle from "./InstagramReelsArticle";
 import FacebookAdsArticle from "./FacebookAdsArticle";
+import GoogleBusinessProfilePage from "./GoogleBusinessProfilePage";
 import { PrivacyPolicyPage, TermsConditionsPage, RefundPolicyPage, NotFoundPage } from "./LegalPages";
 import RwLoader from "./rw/RwLoader.jsx";
 import RwHeader from "./rw/RwHeader.jsx";
@@ -105,9 +106,8 @@ function makeBlogPostingJsonLd(opts: {
     image: opts.image,
     datePublished: opts.datePublished,
     author: {
-      "@type": "Organization",
-      name: "Work360 Agency",
-      url: SITE_ORIGIN,
+      "@type": "Person",
+      name: "Sharanpreet Singh",
     },
     publisher: {
       "@type": "Organization",
@@ -121,6 +121,26 @@ function makeBlogPostingJsonLd(opts: {
   };
 }
 
+function makeFaqPageJsonLd(items: Array<{ question: string; answer: string }>) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+}
+
+const HOME_FAQ_ITEMS = CMS_ROWS.filter((r) => r["rw-row"] === "faq").map((r) => ({
+  question: r.f1 || "",
+  answer: r.f2 || "",
+}));
+
 export interface RouteMeta {
   path: string;
   title: string;
@@ -130,7 +150,7 @@ export interface RouteMeta {
   ogType: "website" | "article";
   lastmod?: string;
   noindex?: boolean;
-  jsonLd?: Record<string, unknown>;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const localSeoDate = getPostIsoDate("local-seo-perth");
@@ -146,22 +166,92 @@ export const ROUTE_META: Record<string, RouteMeta> = {
     canonical: `${SITE_ORIGIN}/`,
     ogImage: DEFAULT_OG_IMAGE,
     ogType: "website",
-    jsonLd: {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      name: "Work360 Agency",
-      url: SITE_ORIGIN,
-      logo: LOGO_URL,
-      image: LOGO_URL,
-      description:
-        "Your Brand. Our 360° Approach. We help small businesses in Australia get found on Google, look great online and get more customers.",
-      areaServed: ["Perth, Western Australia", "Australia"],
-      sameAs: [
-        "https://www.instagram.com/work360agency",
-        "https://www.facebook.com/work360agency",
-        "https://www.linkedin.com/company/work360agency",
-      ],
-    },
+    jsonLd: [
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        name: "Work360 Agency",
+        url: SITE_ORIGIN,
+        logo: LOGO_URL,
+        image: LOGO_URL,
+        description:
+          "Your Brand. Our 360° Approach. We help small businesses in Australia get found on Google, look great online and get more customers.",
+        areaServed: ["Perth, Western Australia", "Australia"],
+        sameAs: [
+          "https://www.instagram.com/work360agency",
+          "https://www.facebook.com/work360agency",
+          "https://www.linkedin.com/company/work360agency",
+        ],
+      },
+      makeFaqPageJsonLd(HOME_FAQ_ITEMS),
+    ],
+  },
+  "/google-business-profile": {
+    path: "/google-business-profile",
+    title: "Google Business Profile setup and management | Work360 Agency",
+    description:
+      "Get found on Google Maps. Google Business Profile setup for A$299 and monthly management for A$199. No lock-in. For small businesses in Perth and across Australia.",
+    canonical: `${SITE_ORIGIN}/google-business-profile`,
+    ogImage: DEFAULT_OG_IMAGE,
+    ogType: "website",
+    lastmod: "2026-10-31",
+    jsonLd: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: "Google Business Profile setup and management",
+        description:
+          "Get found on Google Maps. Google Business Profile setup for A$299 and monthly management for A$199. No lock-in. For small businesses in Perth and across Australia.",
+        url: `${SITE_ORIGIN}/google-business-profile`,
+        provider: {
+          "@type": "ProfessionalService",
+          name: "Work360 Agency",
+          url: SITE_ORIGIN,
+        },
+        areaServed: ["Perth, Western Australia", "Australia"],
+        offers: [
+          {
+            "@type": "Offer",
+            name: "Google Business Profile setup",
+            price: "299",
+            priceCurrency: "AUD",
+          },
+          {
+            "@type": "Offer",
+            name: "Google Business Profile monthly management",
+            price: "199",
+            priceCurrency: "AUD",
+            priceSpecification: {
+              "@type": "UnitPriceSpecification",
+              price: "199",
+              priceCurrency: "AUD",
+              unitText: "MONTH",
+            },
+          },
+        ],
+      },
+      makeFaqPageJsonLd([
+        {
+          question: "Can you guarantee first place on Google Maps?",
+          answer:
+            "No. Nobody can promise that honestly. Google ranks map results by relevance, distance and how well known a business is. We work on the parts you can change.",
+        },
+        {
+          question: "Do I need a website?",
+          answer:
+            "No. You can show up on Google Maps without one, but a website helps Google understand your business.",
+        },
+        {
+          question: "How long until I see results?",
+          answer:
+            "Profile fixes can show changes within a few weeks. Reviews and steady results usually take 3 to 6 months.",
+        },
+        {
+          question: "Do I lose my profile if I stop?",
+          answer: "No. The profile is always yours.",
+        },
+      ]),
+    ],
   },
   "/blog/local-seo-perth": {
     path: "/blog/local-seo-perth",
@@ -172,14 +262,33 @@ export const ROUTE_META: Record<string, RouteMeta> = {
     ogImage: `${SITE_ORIGIN}/assets/urlaubstracker-ZXgGLpUF8cg-unsplash.jpg`,
     ogType: "article",
     lastmod: localSeoDate,
-    jsonLd: makeBlogPostingJsonLd({
-      headline: "Local SEO in Perth: what still moves the Google map pack",
-      description:
-        "A simple guide for Perth small businesses: what Google looks at for the map pack, with real profile numbers from a Perth farm stall.",
-      canonical: `${SITE_ORIGIN}/blog/local-seo-perth`,
-      image: `${SITE_ORIGIN}/assets/urlaubstracker-ZXgGLpUF8cg-unsplash.jpg`,
-      datePublished: localSeoDate,
-    }),
+    jsonLd: [
+      makeBlogPostingJsonLd({
+        headline: "Local SEO in Perth: what still moves the Google map pack",
+        description:
+          "A simple guide for Perth small businesses: what Google looks at for the map pack, with real profile numbers from a Perth farm stall.",
+        canonical: `${SITE_ORIGIN}/blog/local-seo-perth`,
+        image: `${SITE_ORIGIN}/assets/urlaubstracker-ZXgGLpUF8cg-unsplash.jpg`,
+        datePublished: localSeoDate,
+      }),
+      makeFaqPageJsonLd([
+        {
+          question: "Is local SEO different from normal SEO?",
+          answer:
+            "Normal SEO is about ranking your website in the list of results. Local SEO is about showing up on Google Maps and in the map pack for people near you. For local SEO, your Google Business Profile matters most.",
+        },
+        {
+          question: "Do I need a website for local SEO?",
+          answer:
+            "You can show up on Google Maps without one. A website helps Google understand your business and gives customers somewhere to go after they find you.",
+        },
+        {
+          question: "Can I pay Google to rank higher on the map?",
+          answer:
+            "You can run Google Ads that appear above the map, marked as sponsored. The normal map results can't be bought.",
+        },
+      ]),
+    ],
   },
   "/blog/instagram-reels-small-business": {
     path: "/blog/instagram-reels-small-business",
@@ -190,14 +299,33 @@ export const ROUTE_META: Record<string, RouteMeta> = {
     ogImage: "https://framerusercontent.com/images/87wKn5rFSjsCMUA9My0OUYJ4dM.webp?width=1900&height=1200",
     ogType: "article",
     lastmod: reelsDate,
-    jsonLd: makeBlogPostingJsonLd({
-      headline: "Reels that sell: the 3-second rule for small businesses",
-      description:
-        "How to start an Instagram Reel so people keep watching. A simple plan for small businesses in Australia that you can film on your phone.",
-      canonical: `${SITE_ORIGIN}/blog/instagram-reels-small-business`,
-      image: "https://framerusercontent.com/images/87wKn5rFSjsCMUA9My0OUYJ4dM.webp?width=1900&height=1200",
-      datePublished: reelsDate,
-    }),
+    jsonLd: [
+      makeBlogPostingJsonLd({
+        headline: "Reels that sell: the 3-second rule for small businesses",
+        description:
+          "How to start an Instagram Reel so people keep watching. A simple plan for small businesses in Australia that you can film on your phone.",
+        canonical: `${SITE_ORIGIN}/blog/instagram-reels-small-business`,
+        image: "https://framerusercontent.com/images/87wKn5rFSjsCMUA9My0OUYJ4dM.webp?width=1900&height=1200",
+        datePublished: reelsDate,
+      }),
+      makeFaqPageJsonLd([
+        {
+          question: "Do I need to show my face in Reels?",
+          answer:
+            "It helps people trust you, but it's not a must. Hands at work, your products and your shop can carry a Reel well, as long as the hook is strong.",
+        },
+        {
+          question: "Should I use trending audio?",
+          answer:
+            "It can help, but don't build a Reel around a song that has nothing to do with your business. A clear hook and useful content matter more.",
+        },
+        {
+          question: "Do Reels work for very small local businesses?",
+          answer:
+            "Yes. Your audience is the people near you, so you don't need millions of views. A few hundred views from locals can bring real customers through the door.",
+        },
+      ]),
+    ],
   },
   "/blog/facebook-ads-small-business": {
     path: "/blog/facebook-ads-small-business",
@@ -208,14 +336,33 @@ export const ROUTE_META: Record<string, RouteMeta> = {
     ogImage: "https://framerusercontent.com/images/NtmyAnUBIcfQXkgdgwQGB2dIVY.webp?width=2000&height=1333",
     ogType: "article",
     lastmod: fbAdsDate,
-    jsonLd: makeBlogPostingJsonLd({
-      headline: "ROAS is not profit: what to check in your Facebook ads",
-      description:
-        "A 6x return on ad spend can still lose money. How Australian small businesses can check if their Facebook and Instagram ads really make a profit.",
-      canonical: `${SITE_ORIGIN}/blog/facebook-ads-small-business`,
-      image: "https://framerusercontent.com/images/NtmyAnUBIcfQXkgdgwQGB2dIVY.webp?width=2000&height=1333",
-      datePublished: fbAdsDate,
-    }),
+    jsonLd: [
+      makeBlogPostingJsonLd({
+        headline: "ROAS is not profit: what to check in your Facebook ads",
+        description:
+          "A 6x return on ad spend can still lose money. How Australian small businesses can check if their Facebook and Instagram ads really make a profit.",
+        canonical: `${SITE_ORIGIN}/blog/facebook-ads-small-business`,
+        image: "https://framerusercontent.com/images/NtmyAnUBIcfQXkgdgwQGB2dIVY.webp?width=2000&height=1333",
+        datePublished: fbAdsDate,
+      }),
+      makeFaqPageJsonLd([
+        {
+          question: "How much should a small business spend on Facebook ads?",
+          answer:
+            "Start with an amount you are happy to test for a month, often $10 to $20 a day for a local business. Increase it only when the cost per customer is below what a customer is worth to you.",
+        },
+        {
+          question: "Is ad spend paid to the agency?",
+          answer:
+            "With us, no. Ad spend is paid straight to Meta or Google from your own account, and you always own the ad account and its data.",
+        },
+        {
+          question: "Are Facebook ads or Google ads better?",
+          answer:
+            "They do different jobs. Google ads reach people who are already searching for what you sell. Facebook and Instagram ads reach people who might want it but aren't searching yet. Many local businesses use both.",
+        },
+      ]),
+    ],
   },
   "/privacy": {
     path: "/privacy",
@@ -264,6 +411,7 @@ export const normalizePath = (p: string) =>
     .replace(/\/+$/, "") || "/";
 
 const BLOG_ARTICLE_PATHS = new Set([
+  "/google-business-profile",
   "/blog/local-seo-perth",
   "/blog/instagram-reels-small-business",
   "/blog/facebook-ads-small-business",
@@ -351,17 +499,17 @@ export default function App({ initialPath }: { initialPath?: string }) {
       robotsMeta.remove();
     }
 
-    let jsonLdEl = document.getElementById("rw-jsonld") as HTMLScriptElement | null;
+    const existingJsonLd = document.querySelectorAll('script[data-rw-jsonld="true"], script#rw-jsonld');
+    existingJsonLd.forEach((el) => el.remove());
     if (meta.jsonLd) {
-      if (!jsonLdEl) {
-        jsonLdEl = document.createElement("script");
-        jsonLdEl.id = "rw-jsonld";
-        jsonLdEl.type = "application/ld+json";
-        document.head.appendChild(jsonLdEl);
+      const items = Array.isArray(meta.jsonLd) ? meta.jsonLd : [meta.jsonLd];
+      for (const item of items) {
+        const scriptEl = document.createElement("script");
+        scriptEl.setAttribute("data-rw-jsonld", "true");
+        scriptEl.type = "application/ld+json";
+        scriptEl.textContent = JSON.stringify(item);
+        document.head.appendChild(scriptEl);
       }
-      jsonLdEl.textContent = JSON.stringify(meta.jsonLd);
-    } else if (jsonLdEl) {
-      jsonLdEl.remove();
     }
   }, [currentPath]);
 
@@ -424,6 +572,30 @@ export default function App({ initialPath }: { initialPath?: string }) {
 
       const rawHref = anchor.getAttribute("href") || "";
       if (!rawHref || /^(mailto|tel|sms|javascript):/i.test(rawHref)) return;
+
+      if (rawHref.startsWith("#")) {
+        const localId = rawHref.slice(1);
+        const localEl = localId ? document.getElementById(localId) : null;
+        if (localEl) {
+          e.preventDefault();
+          try {
+            window.history.replaceState(null, "", `${window.location.pathname}#${localId}`);
+          } catch {}
+          requestAnimationFrame(() => {
+            try {
+              document.documentElement.style.overflow = "";
+              const lenis = (window as any).__ltLenis || (window as any).__vcLenis || (window as any).lenis;
+              if (lenis && typeof lenis.scrollTo === "function") {
+                lenis.start?.();
+                lenis.scrollTo(localEl, { offset: -96 });
+                return;
+              }
+            } catch {}
+            localEl.scrollIntoView({ behavior: "smooth", block: "start" });
+          });
+          return;
+        }
+      }
 
       let url: URL;
       try {
@@ -543,14 +715,18 @@ export default function App({ initialPath }: { initialPath?: string }) {
         ctaLabel="Get a free audit"
         ctaLink="/#free-audit"
         followLabel="Follow"
-        links="Services:/#services, Work:/#work, Pricing:/#pricing, About:/#about, Blog:/#blog"
+        links="Services:/#services, Google Profile:/google-business-profile, Work:/#work, Pricing:/#pricing, About:/#about, Blog:/#blog"
         menuLabel="Menu"
         timeLabel="Local time"
         style={{ width: "100%" }}
       />
 
       {/* Main 12-Section Homepage Flow or Subpage */}
-      {currentPath === "/blog/local-seo-perth" ? (
+      {currentPath === "/google-business-profile" ? (
+        <main style={{ width: "100%", position: "relative", zIndex: 1 }}>
+          <GoogleBusinessProfilePage />
+        </main>
+      ) : currentPath === "/blog/local-seo-perth" ? (
         <main style={{ width: "100%", position: "relative", zIndex: 1 }}>
           <LocalSeoPerthArticle />
         </main>
@@ -594,7 +770,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
             heading="Get seen by|the *right crowd.*"
             hint="Move to reach · click to launch a campaign"
             navCta="Get a free audit"
-            navLinks="Services:/#services, Work:/#work, Pricing:/#pricing, About:/#about, Blog:/#blog"
+            navLinks="Services:/#services, Google Profile:/google-business-profile, Work:/#work, Pricing:/#pricing, About:/#about, Blog:/#blog"
             primary="Get a free audit"
             primaryLink="/#free-audit"
             secondary="See real results"

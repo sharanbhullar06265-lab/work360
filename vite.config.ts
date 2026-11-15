@@ -23,6 +23,7 @@ function escapeHtmlText(str: string): string {
 
 const VALID_ROUTES = new Set([
   '/',
+  '/google-business-profile',
   '/blog/local-seo-perth',
   '/blog/instagram-reels-small-business',
   '/blog/facebook-ads-small-business',
@@ -148,12 +149,14 @@ function devSsrPrerender(): Plugin {
             /<!--canonical-link-->|<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/,
             () => `<link rel="canonical" href="${escapeHtmlAttr(meta.canonical)}" />`
           );
+          const jsonLdScripts = meta.jsonLd
+            ? (Array.isArray(meta.jsonLd) ? meta.jsonLd : [meta.jsonLd])
+                .map((item: unknown) => `<script data-rw-jsonld="true" type="application/ld+json">${JSON.stringify(item)}</script>`)
+                .join('\n    ')
+            : '';
           out = out.replace(
-            /<!--json-ld-->|<script\s+id="rw-jsonld"\s+type="application\/ld\+json">[\s\S]*?<\/script>/,
-            () =>
-              meta.jsonLd
-                ? `<script id="rw-jsonld" type="application/ld+json">${JSON.stringify(meta.jsonLd)}</script>`
-                : ''
+            /<!--json-ld-->|(<script\s+(?:id="rw-jsonld"|data-rw-jsonld="true")\s+type="application\/ld\+json">[\s\S]*?<\/script>\s*)+/,
+            () => jsonLdScripts
           );
           return out;
         } catch (err) {

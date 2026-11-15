@@ -77,8 +77,55 @@ const ARTICLE_CSS = `
   object-fit: cover;
   display: block;
   border-radius: 20px;
-  margin: 0 0 40px;
+  margin: 0 0 32px;
   background: color-mix(in srgb, var(--rw-stone) 22%, transparent);
+}
+.rwart-short {
+  background: var(--rw-cloud);
+  border-radius: 16px;
+  box-shadow: inset 0 0 0 1px var(--rw-fog);
+  padding: 20px 22px;
+  margin: 0 0 20px;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--rw-ink);
+}
+.rwart-toc {
+  background: color-mix(in srgb, var(--rw-cloud) 55%, var(--rw-bone));
+  border-radius: 16px;
+  box-shadow: inset 0 0 0 1px var(--rw-fog);
+  padding: 18px 22px;
+  margin: 0 0 36px;
+}
+.rwart-toc-label {
+  margin: 0 0 10px !important;
+  font-family: "Geist Mono", "Fragment Mono", ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rw-mut);
+}
+.rwart-toc ul {
+  margin: 0 !important;
+  padding-left: 18px !important;
+  list-style-type: disc;
+}
+.rwart-toc li {
+  margin-bottom: 6px !important;
+  font-size: 15.5px;
+  line-height: 1.45;
+}
+.rwart-toc li:last-child {
+  margin-bottom: 0 !important;
+}
+.rwart-toc a {
+  color: var(--rw-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.rwart-toc a:hover {
+  opacity: 0.75;
 }
 .rwart-body {
   font-size: 18px;
@@ -89,9 +136,24 @@ const ARTICLE_CSS = `
   .rwart-body {
     font-size: 17px;
   }
+  .rwart-short {
+    font-size: 16.5px;
+    padding: 18px 18px;
+  }
+  .rwart-toc {
+    padding: 16px 18px;
+  }
 }
 .rwart-body p {
   margin: 0 0 22px;
+}
+.rwart-body a:not(.rw-btn) {
+  color: var(--rw-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.rwart-body a:not(.rw-btn):hover {
+  opacity: 0.75;
 }
 .rwart-body h2 {
   font-family: "Funnel Display", "Inter", -apple-system, sans-serif;
@@ -101,6 +163,7 @@ const ARTICLE_CSS = `
   letter-spacing: -0.03em;
   margin: 44px 0 16px;
   color: var(--rw-ink);
+  scroll-margin-top: 96px;
 }
 .rwart-body ul {
   margin: 0 0 26px;
@@ -120,8 +183,34 @@ const ARTICLE_CSS = `
   border-top: 1px solid var(--rw-fog);
   margin: 44px 0 32px;
 }
+.rwart-author {
+  font-size: 16px;
+  color: var(--rw-mut);
+  margin: 0 0 20px !important;
+}
 .rwart-cta-wrap {
   margin-top: 24px;
+}
+.rwart-next {
+  margin-top: 44px;
+  padding-top: 28px;
+  border-top: 1px solid var(--rw-fog);
+}
+.rwart-next-label {
+  margin: 0 0 12px !important;
+  font-family: "Geist Mono", "Fragment Mono", ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rw-mut);
+}
+.rwart-next ul {
+  margin: 0 !important;
+  padding-left: 20px !important;
+}
+.rwart-next li {
+  margin-bottom: 8px !important;
 }
 .rwart-btn.rw-btn {
   --face: var(--rw-brass);
@@ -175,6 +264,52 @@ export default function InstagramReelsArticle() {
         />
 
         <div className="rwart-body">
+          <div className="rwart-short">
+            Short answer: Start every Reel with your customer&apos;s problem in the first 3 seconds, and show that hook as text on screen from the first frame. Keep to one idea per Reel, 20 to 45 seconds, with real footage of your business. End with one clear action, like "comment a word" or "message us".
+          </div>
+
+          <nav className="rwart-toc" aria-label="In this article">
+            <p className="rwart-toc-label">In this article</p>
+            <ul>
+              <li>
+                <a href="#what-should-the-first-3-seconds-of-a-reel-show">
+                  What should the first 3 seconds of a Reel show?
+                </a>
+              </li>
+              <li>
+                <a href="#should-i-put-text-on-the-screen">
+                  Should I put text on the screen?
+                </a>
+              </li>
+              <li>
+                <a href="#how-long-should-a-reel-be">
+                  How long should a Reel be?
+                </a>
+              </li>
+              <li>
+                <a href="#what-should-a-small-business-actually-post">
+                  What should a small business actually post?
+                </a>
+              </li>
+              <li>
+                <a href="#how-do-i-get-people-to-take-the-next-step">
+                  How do I get people to take the next step?
+                </a>
+              </li>
+              <li>
+                <a href="#how-often-should-i-post-reels">
+                  How often should I post Reels?
+                </a>
+              </li>
+              <li>
+                <a href="#a-quick-reel-checklist">A quick Reel checklist</a>
+              </li>
+              <li>
+                <a href="#questions-people-ask">Questions people ask</a>
+              </li>
+            </ul>
+          </nav>
+
           <p>
             People decide very fast whether to keep watching a Reel. If the first few seconds don't give them a reason to stay, they swipe, and Instagram shows your video to fewer people. That's why we plan every Reel for our clients around the first three seconds before we think about anything else.
           </p>
@@ -183,7 +318,7 @@ export default function InstagramReelsArticle() {
             You don't need a studio or a big budget for this. A phone, good light and a clear first line will do most of the work.
           </p>
 
-          <h2>What should the first 3 seconds of a Reel show?</h2>
+          <h2 id="what-should-the-first-3-seconds-of-a-reel-show">What should the first 3 seconds of a Reel show?</h2>
 
           <p>
             Start with the problem your customer has. Don't start with your logo, a slow pan of your shop or "Hi everyone, welcome back".
@@ -204,7 +339,7 @@ export default function InstagramReelsArticle() {
             A good first line usually does one of these: names a problem ("Your Google profile is losing you customers"), makes a bold but true promise ("Fresh bread every Saturday from 7am"), or shows the result first and then how you got there.
           </p>
 
-          <h2>Should I put text on the screen?</h2>
+          <h2 id="should-i-put-text-on-the-screen">Should I put text on the screen?</h2>
 
           <p>
             Yes. Lots of people scroll with the sound off, so put your hook on screen as text from the very first frame. Keep it short, bold and easy to read on a small phone.
@@ -214,7 +349,7 @@ export default function InstagramReelsArticle() {
             Watch where you place it. Instagram puts the caption, username and buttons along the bottom and down the right side of the screen. Keep your text in the middle of the screen so those buttons don't cover it. Use the same hook as your cover image too, so your profile grid shows what each video is about.
           </p>
 
-          <h2>How long should a Reel be?</h2>
+          <h2 id="how-long-should-a-reel-be">How long should a Reel be?</h2>
 
           <p>
             As long as the idea needs and no longer. For most small business tips, 20 to 45 seconds is enough. Cut every pause, every "um" and anything that repeats.
@@ -224,7 +359,7 @@ export default function InstagramReelsArticle() {
             Stick to one idea per Reel. If you have five tips, make five Reels. Each one gets its own hook and its own chance to reach new people.
           </p>
 
-          <h2>What should a small business actually post?</h2>
+          <h2 id="what-should-a-small-business-actually-post">What should a small business actually post?</h2>
 
           <p>
             Write about what your customer gets. "We're excited to announce our new menu" means very little to someone scrolling. "New breakfast menu, and the eggs benedict is $16 until Friday" gives them a reason to visit.
@@ -244,7 +379,7 @@ export default function InstagramReelsArticle() {
             Show your real shop, products and people. Customers want to know what they will see when they walk in.
           </p>
 
-          <h2>How do I get people to take the next step?</h2>
+          <h2 id="how-do-i-get-people-to-take-the-next-step">How do I get people to take the next step?</h2>
 
           <p>
             End every Reel with one clear action. Ask people to comment a word for a free guide, send you a message, or tap the link in your bio to book. One action is easier to follow than three.
@@ -254,7 +389,7 @@ export default function InstagramReelsArticle() {
             If you ask people to comment a word, reply to every comment. A tool like ManyChat can send the guide by DM automatically, or you can send it by hand at the start.
           </p>
 
-          <h2>How often should I post Reels?</h2>
+          <h2 id="how-often-should-i-post-reels">How often should I post Reels?</h2>
 
           <p>
             Pick a schedule you can keep. Three good Reels a week will do more for you than daily posts you rush. Post at the same time each day, when your customers are likely to be on their phones. For many Australian small businesses, early evening works well.
@@ -264,7 +399,7 @@ export default function InstagramReelsArticle() {
             You can schedule Reels for free in Meta Business Suite, so you can film on the weekend and post during the week.
           </p>
 
-          <h2>A quick Reel checklist</h2>
+          <h2 id="a-quick-reel-checklist">A quick Reel checklist</h2>
 
           <ul>
             <li>The first line names a problem, a promise or a result</li>
@@ -277,7 +412,7 @@ export default function InstagramReelsArticle() {
             <li>The cover image shows the hook</li>
           </ul>
 
-          <h2>Questions people ask</h2>
+          <h2 id="questions-people-ask">Questions people ask</h2>
 
           <p>
             <strong className="rwart-faq-q">Do I need to show my face in Reels?</strong>
@@ -296,8 +431,12 @@ export default function InstagramReelsArticle() {
 
           <hr className="rwart-hr" />
 
+          <p className="rwart-author">
+            Written by Sharanpreet Singh, founder of Work360 Agency. Google and Meta certified.
+          </p>
+
           <p>
-            Want us to plan your Reels? Fill in the free audit form and we'll send you a written plan on email or WhatsApp.
+            Want us to <a href="/#services">plan your Reels</a>? Fill in the free audit form and we'll send you a written plan on email or WhatsApp.
           </p>
 
           <div className="rwart-cta-wrap">
@@ -333,6 +472,22 @@ export default function InstagramReelsArticle() {
                 </b>
               </span>
             </a>
+          </div>
+
+          <div className="rwart-next">
+            <p className="rwart-next-label">Read next</p>
+            <ul>
+              <li>
+                <a href="/blog/local-seo-perth">
+                  Local SEO in Perth: what still moves the Google map pack
+                </a>
+              </li>
+              <li>
+                <a href="/blog/facebook-ads-small-business">
+                  ROAS is not profit: what to check in your Facebook ads
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

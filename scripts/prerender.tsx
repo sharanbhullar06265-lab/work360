@@ -73,12 +73,15 @@ export function renderRouteWithMeta(templateHtml: string, meta: RouteMeta): stri
     () => `<link rel="canonical" href="${escapeHtmlAttr(meta.canonical)}" />`
   );
 
+  const jsonLdScripts = meta.jsonLd
+    ? (Array.isArray(meta.jsonLd) ? meta.jsonLd : [meta.jsonLd])
+        .map((item) => `<script data-rw-jsonld="true" type="application/ld+json">${JSON.stringify(item)}</script>`)
+        .join('\n    ')
+    : '';
+
   html = html.replace(
-    /<!--json-ld-->|<script\s+id="rw-jsonld"\s+type="application\/ld\+json">[\s\S]*?<\/script>/,
-    () =>
-      meta.jsonLd
-        ? `<script id="rw-jsonld" type="application/ld+json">${JSON.stringify(meta.jsonLd)}</script>`
-        : ''
+    /<!--json-ld-->|(<script\s+(?:id="rw-jsonld"|data-rw-jsonld="true")\s+type="application\/ld\+json">[\s\S]*?<\/script>\s*)+/,
+    () => jsonLdScripts
   );
 
   return html;

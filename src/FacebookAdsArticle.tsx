@@ -77,8 +77,55 @@ const ARTICLE_CSS = `
   object-fit: cover;
   display: block;
   border-radius: 20px;
-  margin: 0 0 40px;
+  margin: 0 0 32px;
   background: color-mix(in srgb, var(--rw-stone) 22%, transparent);
+}
+.rwart-short {
+  background: var(--rw-cloud);
+  border-radius: 16px;
+  box-shadow: inset 0 0 0 1px var(--rw-fog);
+  padding: 20px 22px;
+  margin: 0 0 20px;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--rw-ink);
+}
+.rwart-toc {
+  background: color-mix(in srgb, var(--rw-cloud) 55%, var(--rw-bone));
+  border-radius: 16px;
+  box-shadow: inset 0 0 0 1px var(--rw-fog);
+  padding: 18px 22px;
+  margin: 0 0 36px;
+}
+.rwart-toc-label {
+  margin: 0 0 10px !important;
+  font-family: "Geist Mono", "Fragment Mono", ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rw-mut);
+}
+.rwart-toc ul {
+  margin: 0 !important;
+  padding-left: 18px !important;
+  list-style-type: disc;
+}
+.rwart-toc li {
+  margin-bottom: 6px !important;
+  font-size: 15.5px;
+  line-height: 1.45;
+}
+.rwart-toc li:last-child {
+  margin-bottom: 0 !important;
+}
+.rwart-toc a {
+  color: var(--rw-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.rwart-toc a:hover {
+  opacity: 0.75;
 }
 .rwart-body {
   font-size: 18px;
@@ -89,9 +136,24 @@ const ARTICLE_CSS = `
   .rwart-body {
     font-size: 17px;
   }
+  .rwart-short {
+    font-size: 16.5px;
+    padding: 18px 18px;
+  }
+  .rwart-toc {
+    padding: 16px 18px;
+  }
 }
 .rwart-body p {
   margin: 0 0 22px;
+}
+.rwart-body a:not(.rw-btn) {
+  color: var(--rw-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.rwart-body a:not(.rw-btn):hover {
+  opacity: 0.75;
 }
 .rwart-body h2 {
   font-family: "Funnel Display", "Inter", -apple-system, sans-serif;
@@ -101,6 +163,7 @@ const ARTICLE_CSS = `
   letter-spacing: -0.03em;
   margin: 44px 0 16px;
   color: var(--rw-ink);
+  scroll-margin-top: 96px;
 }
 .rwart-body ul {
   margin: 0 0 26px;
@@ -120,8 +183,34 @@ const ARTICLE_CSS = `
   border-top: 1px solid var(--rw-fog);
   margin: 44px 0 32px;
 }
+.rwart-author {
+  font-size: 16px;
+  color: var(--rw-mut);
+  margin: 0 0 20px !important;
+}
 .rwart-cta-wrap {
   margin-top: 24px;
+}
+.rwart-next {
+  margin-top: 44px;
+  padding-top: 28px;
+  border-top: 1px solid var(--rw-fog);
+}
+.rwart-next-label {
+  margin: 0 0 12px !important;
+  font-family: "Geist Mono", "Fragment Mono", ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rw-mut);
+}
+.rwart-next ul {
+  margin: 0 !important;
+  padding-left: 20px !important;
+}
+.rwart-next li {
+  margin-bottom: 8px !important;
 }
 .rwart-btn.rw-btn {
   --face: var(--rw-brass);
@@ -175,11 +264,59 @@ export default function FacebookAdsArticle() {
         />
 
         <div className="rwart-body">
+          <div className="rwart-short">
+            Short answer: ROAS only measures sales, not profit. To find your break-even ROAS, divide 1 by your profit margin. A 50% margin needs at least 2x, and a 15% margin needs at least 6.7x. Watch profit after ad spend if you sell online, or cost per new customer if you are a service business.
+          </div>
+
+          <nav className="rwart-toc" aria-label="In this article">
+            <p className="rwart-toc-label">In this article</p>
+            <ul>
+              <li>
+                <a href="#how-can-a-6x-roas-lose-money">
+                  How can a 6x ROAS lose money?
+                </a>
+              </li>
+              <li>
+                <a href="#what-roas-do-i-need-to-break-even">
+                  What ROAS do I need to break even?
+                </a>
+              </li>
+              <li>
+                <a href="#what-number-should-i-watch-instead">
+                  What number should I watch instead?
+                </a>
+              </li>
+              <li>
+                <a href="#how-do-i-know-which-sales-came-from-my-ads">
+                  How do I know which sales came from my ads?
+                </a>
+              </li>
+              <li>
+                <a href="#is-the-boost-button-good-enough">
+                  Is the Boost button good enough?
+                </a>
+              </li>
+              <li>
+                <a href="#how-long-before-i-can-judge-my-ads">
+                  How long before I can judge my ads?
+                </a>
+              </li>
+              <li>
+                <a href="#a-quick-checklist-for-your-facebook-ads">
+                  A quick checklist for your Facebook ads
+                </a>
+              </li>
+              <li>
+                <a href="#questions-people-ask">Questions people ask</a>
+              </li>
+            </ul>
+          </nav>
+
           <p>
             Many small business owners judge their Facebook ads by one number: ROAS, or return on ad spend. If you spend $500 on ads and the ads bring in $3,000 of sales, your ROAS is 6x. It sounds great, and sometimes it is. But ROAS only measures sales. It says nothing about what you kept after paying for the products, the GST and the ads themselves.
           </p>
 
-          <h2>How can a 6x ROAS lose money?</h2>
+          <h2 id="how-can-a-6x-roas-lose-money">How can a 6x ROAS lose money?</h2>
 
           <p>
             Take two shops. Each one spends $500 on Facebook ads and makes $3,000 of sales from them, GST included. Both have a ROAS of 6x.
@@ -199,7 +336,7 @@ export default function FacebookAdsArticle() {
 
           <p>Both shops have the same ROAS, so the gap comes from their profit margin.</p>
 
-          <h2>What ROAS do I need to break even?</h2>
+          <h2 id="what-roas-do-i-need-to-break-even">What ROAS do I need to break even?</h2>
 
           <p>
             Here is a quick way to work it out. Divide 1 by your profit margin (as a decimal, before ad costs):
@@ -215,7 +352,7 @@ export default function FacebookAdsArticle() {
             Work this out using sales before GST. Anything below your break-even number costs you money, even if the ads look busy.
           </p>
 
-          <h2>What number should I watch instead?</h2>
+          <h2 id="what-number-should-i-watch-instead">What number should I watch instead?</h2>
 
           <p>
             For shops that sell online, watch profit after ad spend. Take your sales before GST, subtract the cost of the products, then subtract the ad spend. That is the money the ads actually made you.
@@ -229,7 +366,7 @@ export default function FacebookAdsArticle() {
             This is the number we put at the top of every ads report we send. It answers the question owners actually ask: did the ads make me money this month?
           </p>
 
-          <h2>How do I know which sales came from my ads?</h2>
+          <h2 id="how-do-i-know-which-sales-came-from-my-ads">How do I know which sales came from my ads?</h2>
 
           <p>
             If you sell online, install the Meta Pixel and the Conversions API on your website. They tell Meta which visitors bought something after seeing your ad, so Ads Manager can show you real sales.
@@ -239,7 +376,7 @@ export default function FacebookAdsArticle() {
             If customers call or walk in, ask every new customer how they found you, and write it down. A simple note in a spreadsheet each day is enough. After a month you will know roughly how many customers came from ads.
           </p>
 
-          <h2>Is the Boost button good enough?</h2>
+          <h2 id="is-the-boost-button-good-enough">Is the Boost button good enough?</h2>
 
           <p>
             Boost is quick, but it often aims for likes and comments, which don't pay the bills. If you use Boost or Ads Manager, check these settings:
@@ -252,13 +389,13 @@ export default function FacebookAdsArticle() {
             <li>Ad account: make sure the ads run from your business ad account, not a personal one.</li>
           </ul>
 
-          <h2>How long before I can judge my ads?</h2>
+          <h2 id="how-long-before-i-can-judge-my-ads">How long before I can judge my ads?</h2>
 
           <p>
             Give a new campaign at least two weeks before you decide. Meta needs time to learn who responds to your ad, and the first few days often look worse than the rest. Change one thing at a time, like the image or the headline, so you can see what made the difference.
           </p>
 
-          <h2>A quick checklist for your Facebook ads</h2>
+          <h2 id="a-quick-checklist-for-your-facebook-ads">A quick checklist for your Facebook ads</h2>
 
           <ul>
             <li>You know your profit margin on each sale</li>
@@ -271,7 +408,7 @@ export default function FacebookAdsArticle() {
             <li>A spending limit is on</li>
           </ul>
 
-          <h2>Questions people ask</h2>
+          <h2 id="questions-people-ask">Questions people ask</h2>
 
           <p>
             <strong className="rwart-faq-q">How much should a small business spend on Facebook ads?</strong>
@@ -290,8 +427,12 @@ export default function FacebookAdsArticle() {
 
           <hr className="rwart-hr" />
 
+          <p className="rwart-author">
+            Written by Sharanpreet Singh, founder of Work360 Agency. Google and Meta certified.
+          </p>
+
           <p>
-            Want us to check your ads? Fill in the free audit form and we'll send you a written plan on email or WhatsApp.
+            Want us to <a href="/#services">check your ads</a>? Fill in the free audit form and we'll send you a written plan on email or WhatsApp.
           </p>
 
           <div className="rwart-cta-wrap">
@@ -327,6 +468,22 @@ export default function FacebookAdsArticle() {
                 </b>
               </span>
             </a>
+          </div>
+
+          <div className="rwart-next">
+            <p className="rwart-next-label">Read next</p>
+            <ul>
+              <li>
+                <a href="/blog/local-seo-perth">
+                  Local SEO in Perth: what still moves the Google map pack
+                </a>
+              </li>
+              <li>
+                <a href="/blog/instagram-reels-small-business">
+                  Reels that sell: the 3-second rule for small businesses
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
