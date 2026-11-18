@@ -24,6 +24,8 @@ function escapeHtmlText(str: string): string {
 const VALID_ROUTES = new Set([
   '/',
   '/google-business-profile',
+  '/local-seo',
+  '/social-media-management',
   '/blog/local-seo-perth',
   '/blog/instagram-reels-small-business',
   '/blog/facebook-ads-small-business',

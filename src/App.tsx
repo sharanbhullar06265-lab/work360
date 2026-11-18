@@ -9,6 +9,8 @@ import LocalSeoPerthArticle from "./LocalSeoPerthArticle";
 import InstagramReelsArticle from "./InstagramReelsArticle";
 import FacebookAdsArticle from "./FacebookAdsArticle";
 import GoogleBusinessProfilePage from "./GoogleBusinessProfilePage";
+import LocalSeoPage from "./LocalSeoPage";
+import SocialMediaManagementPage from "./SocialMediaManagementPage";
 import { PrivacyPolicyPage, TermsConditionsPage, RefundPolicyPage, NotFoundPage } from "./LegalPages";
 import RwLoader from "./rw/RwLoader.jsx";
 import RwHeader from "./rw/RwHeader.jsx";
@@ -160,7 +162,7 @@ const fbAdsDate = getPostIsoDate("facebook-ads-small-business");
 export const ROUTE_META: Record<string, RouteMeta> = {
   "/": {
     path: "/",
-    title: "Work360 Agency — Digital Marketing Agency",
+    title: "Work360 Agency | Digital Marketing for Perth and Australian Small Businesses",
     description:
       "Your Brand. Our 360° Approach. We help small businesses in Australia get found on Google, look great online and get more customers.",
     canonical: `${SITE_ORIGIN}/`,
@@ -249,6 +251,94 @@ export const ROUTE_META: Record<string, RouteMeta> = {
         {
           question: "Do I lose my profile if I stop?",
           answer: "No. The profile is always yours.",
+        },
+      ]),
+    ],
+  },
+  "/local-seo": {
+    path: "/local-seo",
+    title: "Local SEO for Perth and Australian Small Businesses | Work360 Agency",
+    description:
+      "Local SEO for small businesses in Perth and across Australia. Website fixes, keyword map, Google profile updates and trusted links. From $900 a month, no lock-in.",
+    canonical: `${SITE_ORIGIN}/local-seo`,
+    ogImage: DEFAULT_OG_IMAGE,
+    ogType: "website",
+    lastmod: "2026-10-31",
+    jsonLd: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: "Local SEO for small businesses in Perth and across Australia",
+        description:
+          "Local SEO for small businesses in Perth and across Australia. Website fixes, keyword map, Google profile updates and trusted links. From $900 a month, no lock-in.",
+        url: `${SITE_ORIGIN}/local-seo`,
+        provider: {
+          "@type": "ProfessionalService",
+          name: "Work360 Agency",
+          url: SITE_ORIGIN,
+        },
+        areaServed: ["Perth, Western Australia", "Australia"],
+      },
+      makeFaqPageJsonLd([
+        {
+          question: "How long does SEO take?",
+          answer: "Usually 3 to 6 months.",
+        },
+        {
+          question: "Can you guarantee first place on Google?",
+          answer: "No. Nobody can promise that honestly.",
+        },
+        {
+          question: "Do I need a website?",
+          answer: "It helps a lot. We can build one from $999.",
+        },
+        {
+          question: "What happens if I stop?",
+          answer: "Your website and Google profile stay yours.",
+        },
+      ]),
+    ],
+  },
+  "/social-media-management": {
+    path: "/social-media-management",
+    title: "Social Media Management for Perth and Australian Small Businesses | Work360 Agency",
+    description:
+      "Instagram and Facebook management for small businesses in Perth and across Australia. 8 posts and 4 Reels a month. From $900 a month, no lock-in.",
+    canonical: `${SITE_ORIGIN}/social-media-management`,
+    ogImage: DEFAULT_OG_IMAGE,
+    ogType: "website",
+    lastmod: "2026-10-31",
+    jsonLd: [
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: "Social media management for small businesses in Perth and across Australia",
+        description:
+          "Instagram and Facebook management for small businesses in Perth and across Australia. 8 posts and 4 Reels a month. From $900 a month, no lock-in.",
+        url: `${SITE_ORIGIN}/social-media-management`,
+        provider: {
+          "@type": "ProfessionalService",
+          name: "Work360 Agency",
+          url: SITE_ORIGIN,
+        },
+        areaServed: ["Perth, Western Australia", "Australia"],
+      },
+      makeFaqPageJsonLd([
+        {
+          question: "Which platforms do you manage?",
+          answer: "Instagram and Facebook.",
+        },
+        {
+          question: "Do I approve posts?",
+          answer: "Yes. Nothing goes live without your OK.",
+        },
+        {
+          question: "Can you run ads too?",
+          answer: "Yes, in the Growth plan.",
+        },
+        {
+          question: "Who owns my pages?",
+          answer: "You do. We are added as partners.",
         },
       ]),
     ],
@@ -412,6 +502,8 @@ export const normalizePath = (p: string) =>
 
 const BLOG_ARTICLE_PATHS = new Set([
   "/google-business-profile",
+  "/local-seo",
+  "/social-media-management",
   "/blog/local-seo-perth",
   "/blog/instagram-reels-small-business",
   "/blog/facebook-ads-small-business",
@@ -717,7 +809,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
         followLabel="Follow"
         links="Services:/#services, Google Profile:/google-business-profile, Work:/#work, Pricing:/#pricing, About:/#about, Blog:/#blog"
         menuLabel="Menu"
-        timeLabel="Local time"
+        timeLabel="Perth time"
         style={{ width: "100%" }}
       />
 
@@ -725,6 +817,14 @@ export default function App({ initialPath }: { initialPath?: string }) {
       {currentPath === "/google-business-profile" ? (
         <main style={{ width: "100%", position: "relative", zIndex: 1 }}>
           <GoogleBusinessProfilePage />
+        </main>
+      ) : currentPath === "/local-seo" ? (
+        <main style={{ width: "100%", position: "relative", zIndex: 1 }}>
+          <LocalSeoPage />
+        </main>
+      ) : currentPath === "/social-media-management" ? (
+        <main style={{ width: "100%", position: "relative", zIndex: 1 }}>
+          <SocialMediaManagementPage />
         </main>
       ) : currentPath === "/blog/local-seo-perth" ? (
         <main style={{ width: "100%", position: "relative", zIndex: 1 }}>
@@ -806,7 +906,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
             {...THEME_TOKENS}
             bpHint="auto"
             button="About us"
-            buttonLink="/#team"
+            buttonLink="/#about"
             buyersShare={12}
             clusters="Search|312|searching “café near me”;Feeds|1,204|following #perthfood;Audiences|88|lookalikes"
             crowdLabel="locals near you"
@@ -857,7 +957,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
             dragLabel="Drag"
             eyebrow="(03) Case studies"
             heading="Results you can|*count*."
-            intro="Six clients, six channels, one habit: we report the number that pays the bills, before and after."
+            intro="One real client, five sample plans. One habit: we report the number that pays the bills."
             readLabel="Read the case"
             sliderLabel="Compare before and after"
             style={{ width: "100%" }}
@@ -892,7 +992,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
             kpis="4,843+:people who viewed the profile:up;509+:profile interactions:up;295+:direction requests:up;189+:website clicks:up"
             liveLabel="Live"
             months="Start,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Now"
-            range="Last 12 months"
+            range="since May 2026"
             reportLabel="Client report · 2026"
             tabs="Overview, SEO, Social, Ads"
             style={{ width: "100%" }}
@@ -986,7 +1086,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
             {...THEME_TOKENS}
             bpHint="auto"
             button="All articles"
-            buttonLink="/#contact"
+            buttonLink="/#blog"
             chip="▲|PERTH TIPS"
             count={3}
             eyebrow="(09) Insights"
@@ -1006,7 +1106,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
             budgets="Under $1,000/mo, $1,000–$2,000/mo, $2,000–$3,000/mo, $3,000+/mo"
             button="Get my free audit"
             cardLabel="Availability"
-            clockLabel="Our time"
+            clockLabel="Perth time"
             emailPlaceholder="Work email"
             eyebrow="(10) Free audit"
             heading="Ready to be|*seen?*"
@@ -1031,7 +1131,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
           bpHint="auto"
           button="Get a free audit"
           buttonLink="/#free-audit"
-          clockLabel="Local time"
+          clockLabel="Perth time"
           company="About:/#about, Work:/#work, Contact:/#free-audit"
           companyTitle="Company"
           contactTitle="Contact"

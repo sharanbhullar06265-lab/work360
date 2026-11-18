@@ -439,6 +439,10 @@ export default function InstagramReelsArticle() {
             Want us to <a href="/#services">plan your Reels</a>? Fill in the free audit form and we'll send you a written plan on email or WhatsApp.
           </p>
 
+          <p>
+            Want us to make your Reels? See our <a href="/social-media-management">social media service</a>.
+          </p>
+
           <div className="rwart-cta-wrap">
             <a href="/#free-audit" className="rw-btn rw-solid rwart-btn">
               <span className="rw-face">

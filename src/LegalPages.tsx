@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-const HOME_TITLE = "Work360 Agency — Digital Marketing Agency";
+const HOME_TITLE = "Work360 Agency | Digital Marketing for Perth and Australian Small Businesses";
 const HOME_DESC =
   "Your Brand. Our 360° Approach. We help small businesses in Australia get found on Google, look great online and get more customers.";
 

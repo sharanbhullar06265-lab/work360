@@ -438,6 +438,10 @@ export default function LocalSeoPerthArticle() {
             Want us to check your Google profile? Fill in the free audit form and we'll send you a written plan on email or WhatsApp.
           </p>
 
+          <p>
+            Want us to do this for you? See our <a href="/local-seo">local SEO service</a>.
+          </p>
+
           <div className="rwart-cta-wrap">
             <a href="/#free-audit" className="rw-btn rw-solid rwart-btn">
               <span className="rw-face">
