@@ -146,7 +146,7 @@ export default function SocialMediaManagementPage() {
         </h1>
 
         <div className="rwart-short">
-          We run your Instagram and Facebook for you: posts, Reels, captions and replies. You send us photos and videos from your phone, we do the rest. From $900 a month, no lock-in.
+          We run your Instagram, Facebook and LinkedIn for you: posts, Reels, captions and replies. You send us photos and videos from your phone, we do the rest. From $900 a month, no lock-in.
         </div>
 
         <div className="rwart-body">
@@ -187,7 +187,7 @@ export default function SocialMediaManagementPage() {
 
           <p>
             <strong className="rwart-faq-q">Which platforms do you manage?</strong>
-            Instagram and Facebook.
+            Instagram, Facebook and LinkedIn.
           </p>
 
           <p>

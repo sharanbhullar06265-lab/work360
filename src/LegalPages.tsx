@@ -241,7 +241,7 @@ export function PrivacyPolicyPage() {
         <h1 className="rwart-h1">Privacy Policy</h1>
 
         <p className="rwart-meta">
-          <span>LAST UPDATED: 31 OCTOBER 2026</span>
+          <span>LAST UPDATED: 18 NOVEMBER 2026</span>
         </p>
 
         <div className="rwart-body">
@@ -287,9 +287,31 @@ export function PrivacyPolicyPage() {
             We take reasonable steps to protect your information, such as keeping it in password-protected accounts that only Work360 can open. No online system is completely secure, so we cannot promise that a problem will never happen, but we will tell you if your information is affected.
           </p>
 
-          <h2>How long we keep it</h2>
+          <h2>How long we keep your information</h2>
+          <ul>
+            <li>Enquiries that do not become clients: deleted 12 months after our last contact.</li>
+            <li>Client emails and messages: reviewed 24 months after our work ends, then deleted if no longer needed.</li>
+            <li>Campaign reports and working files: kept for 24 months after our work ends.</li>
+            <li>Invoices and payment records: kept for as long as tax and accounting laws require.</li>
+            <li>Passwords and account access: removed as soon as our work ends.</li>
+            <li>Backups: deleted copies expire from backups within 90 days.</li>
+          </ul>
+
+          <h2>Where your information is stored</h2>
           <p>
-            We keep your information for as long as we need it for the reasons above, or as long as the law requires us to keep business records. After that we delete it.
+            Work360 Agency is run from India. Your information may be stored or processed in India and by the online tools we use to run our business (for example website hosting, email, analytics and advertising platforms). We only share what these tools need to do their job.
+          </p>
+
+          <h2>Your choices</h2>
+          <p>
+            You can ask us to see, correct or delete your information, or to stop using it, at any time. Email us at{" "}
+            <a href="mailto:work360agency@gmail.com">work360agency@gmail.com</a> and we aim to reply within 30 days.
+          </p>
+
+          <h2>Australian clients</h2>
+          <p>
+            We serve clients in Australia. We aim to handle personal information in line with the Australian Privacy Principles, as well as India&apos;s Digital Personal Data Protection Act. If you have a privacy concern, email us first at{" "}
+            <a href="mailto:work360agency@gmail.com">work360agency@gmail.com</a>. If you are not happy with our answer, you can contact the Office of the Australian Information Commissioner (oaic.gov.au).
           </p>
 
           <h2>Your rights</h2>
@@ -344,7 +366,7 @@ export function TermsConditionsPage() {
         <h1 className="rwart-h1">Terms &amp; Conditions</h1>
 
         <p className="rwart-meta">
-          <span>LAST UPDATED: 31 OCTOBER 2026</span>
+          <span>LAST UPDATED: 18 NOVEMBER 2026</span>
         </p>
 
         <div className="rwart-body">
@@ -419,9 +441,17 @@ export function TermsConditionsPage() {
             Email <a href="mailto:work360agency@gmail.com">work360agency@gmail.com</a>. We reply within 24 hours and aim to resolve complaints within 7 working days.
           </p>
 
-          <h2>Law and disputes</h2>
+          <h2>Who we are</h2>
           <p>
-            These terms are governed by the laws of India. Any dispute will be handled by the courts of Punjab, India.
+            Work360 Agency is run by Sharanpreet Singh as a sole trader based in Punjab, India.
+          </p>
+
+          <h2>Governing law and disputes</h2>
+          <p>
+            These terms are governed by the laws of India. If there is a disagreement, we will first try to sort it out together in good faith, by email or WhatsApp. If we cannot agree, either side may take the matter to the courts in Punjab, India.
+          </p>
+          <p>
+            Nothing in these terms removes or limits any rights you have that cannot be removed under Australian law, including the Australian Consumer Law where it applies.
           </p>
 
           <h2>Changes to these terms</h2>

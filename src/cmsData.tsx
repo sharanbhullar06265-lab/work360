@@ -632,7 +632,7 @@ export const CMS_ROWS: CmsRowData[] = [
     "f4": "$900/mo",
     "f5": "Technical audit;Keyword map;Google Business Profile updates;Link building;Monthly ranking report",
     "f6": "seo",
-    "f7": "Page 1 on Google",
+    "f7": "Found by more locals",
     "f8": "",
     "f9": "",
     "f10": "",

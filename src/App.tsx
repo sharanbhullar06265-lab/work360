@@ -164,7 +164,7 @@ export const ROUTE_META: Record<string, RouteMeta> = {
     path: "/",
     title: "Work360 Agency | Digital Marketing for Perth and Australian Small Businesses",
     description:
-      "Your Brand. Our 360° Approach. We help small businesses in Australia get found on Google, look great online and get more customers.",
+      "Digital marketing for small businesses in Perth and across Australia. Google profile, local SEO, social media and ads, with plain monthly reports and no lock-in.",
     canonical: `${SITE_ORIGIN}/`,
     ogImage: DEFAULT_OG_IMAGE,
     ogType: "website",
@@ -303,7 +303,7 @@ export const ROUTE_META: Record<string, RouteMeta> = {
     path: "/social-media-management",
     title: "Social Media Management for Perth and Australian Small Businesses | Work360 Agency",
     description:
-      "Instagram and Facebook management for small businesses in Perth and across Australia. 8 posts and 4 Reels a month. From $900 a month, no lock-in.",
+      "Instagram, Facebook and LinkedIn management for small businesses in Perth and across Australia. 8 posts and 4 Reels a month. From $900 a month, no lock-in.",
     canonical: `${SITE_ORIGIN}/social-media-management`,
     ogImage: DEFAULT_OG_IMAGE,
     ogType: "website",
@@ -314,7 +314,7 @@ export const ROUTE_META: Record<string, RouteMeta> = {
         "@type": "Service",
         name: "Social media management for small businesses in Perth and across Australia",
         description:
-          "Instagram and Facebook management for small businesses in Perth and across Australia. 8 posts and 4 Reels a month. From $900 a month, no lock-in.",
+          "Instagram, Facebook and LinkedIn management for small businesses in Perth and across Australia. 8 posts and 4 Reels a month. From $900 a month, no lock-in.",
         url: `${SITE_ORIGIN}/social-media-management`,
         provider: {
           "@type": "ProfessionalService",
@@ -326,7 +326,7 @@ export const ROUTE_META: Record<string, RouteMeta> = {
       makeFaqPageJsonLd([
         {
           question: "Which platforms do you manage?",
-          answer: "Instagram and Facebook.",
+          answer: "Instagram, Facebook and LinkedIn.",
         },
         {
           question: "Do I approve posts?",
@@ -633,7 +633,10 @@ export default function App({ initialPath }: { initialPath?: string }) {
         (window as any).__ltLenis?.start?.();
       } catch {}
       if (targetId === "__top__") {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.scrollTo(0, 0);
+        try {
+          (window as any).__ltLenis?.scrollTo?.(0, { immediate: true, force: true });
+        } catch {}
         return;
       }
       const resolvedId = targetId === "contact" ? "free-audit" : targetId;
@@ -723,9 +726,27 @@ export default function App({ initialPath }: { initialPath?: string }) {
         e.preventDefault();
         if (normalizePath(window.location.pathname) !== "/") {
           window.history.pushState(null, "", "/");
+          window.scrollTo(0, 0);
+          try {
+            (window as any).__ltLenis?.scrollTo?.(0, { immediate: true, force: true });
+          } catch {}
           setPendingScrollId("__top__");
           setCurrentPath("/");
         } else {
+          try {
+            if (window.location.hash) {
+              window.history.replaceState(null, "", "/");
+            }
+          } catch {}
+          try {
+            document.documentElement.style.overflow = "";
+            const lenis = (window as any).__ltLenis || (window as any).__vcLenis || (window as any).lenis;
+            if (lenis && typeof lenis.scrollTo === "function") {
+              lenis.start?.();
+              lenis.scrollTo(0);
+              return;
+            }
+          } catch {}
           window.scrollTo({ top: 0, behavior: "smooth" });
         }
         return;
@@ -807,7 +828,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
         ctaLabel="Get a free audit"
         ctaLink="/#free-audit"
         followLabel="Follow"
-        links="Services:/#services, Google Profile:/google-business-profile, Work:/#work, Pricing:/#pricing, About:/#about, Blog:/#blog"
+        links="Home:/, Services:/#services, Google Profile:/google-business-profile, Work:/#work, Pricing:/#pricing, About:/#about, Blog:/#blog"
         menuLabel="Menu"
         timeLabel="Perth time"
         style={{ width: "100%" }}
