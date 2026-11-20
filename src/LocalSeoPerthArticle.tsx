@@ -431,7 +431,7 @@ export default function LocalSeoPerthArticle() {
           <hr className="rwart-hr" />
 
           <p className="rwart-author">
-            Written by Sharanpreet Singh, founder of Work360 Agency. Completed Google and Meta digital marketing courses.
+            Written by Sharanpreet Singh, founder of Work360Agency. Completed Google and Meta digital marketing courses.
           </p>
 
           <p>

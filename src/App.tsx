@@ -9,6 +9,7 @@ import LocalSeoPerthArticle from "./LocalSeoPerthArticle";
 import InstagramReelsArticle from "./InstagramReelsArticle";
 import FacebookAdsArticle from "./FacebookAdsArticle";
 import GoogleBusinessProfilePage from "./GoogleBusinessProfilePage";
+import { GBP_FAQ_ITEMS } from "./gbpFaq";
 import LocalSeoPage from "./LocalSeoPage";
 import SocialMediaManagementPage from "./SocialMediaManagementPage";
 import { PrivacyPolicyPage, TermsConditionsPage, RefundPolicyPage, NotFoundPage } from "./LegalPages";
@@ -113,7 +114,7 @@ function makeBlogPostingJsonLd(opts: {
     },
     publisher: {
       "@type": "Organization",
-      name: "Work360 Agency",
+      name: "Work360Agency",
       url: SITE_ORIGIN,
       logo: {
         "@type": "ImageObject",
@@ -162,7 +163,7 @@ const fbAdsDate = getPostIsoDate("facebook-ads-small-business");
 export const ROUTE_META: Record<string, RouteMeta> = {
   "/": {
     path: "/",
-    title: "Work360 Agency | Digital Marketing for Perth and Australian Small Businesses",
+    title: "Work360Agency | Digital Marketing for Perth and Australian Small Businesses",
     description:
       "Digital marketing for small businesses in Perth and across Australia. Google profile, local SEO, social media and ads, with plain monthly reports and no lock-in.",
     canonical: `${SITE_ORIGIN}/`,
@@ -172,12 +173,12 @@ export const ROUTE_META: Record<string, RouteMeta> = {
       {
         "@context": "https://schema.org",
         "@type": "ProfessionalService",
-        name: "Work360 Agency",
+        name: "Work360Agency",
         url: SITE_ORIGIN,
         logo: LOGO_URL,
         image: LOGO_URL,
         description:
-          "Your Brand. Our 360° Approach. We help small businesses in Australia get found on Google, look great online and get more customers.",
+          "Digital marketing for small businesses in Perth and across Australia. Google profile, local SEO, social media and ads, with plain monthly reports and no lock-in.",
         areaServed: ["Perth, Western Australia", "Australia"],
         sameAs: [
           "https://www.instagram.com/work360agency",
@@ -190,24 +191,24 @@ export const ROUTE_META: Record<string, RouteMeta> = {
   },
   "/google-business-profile": {
     path: "/google-business-profile",
-    title: "Google Business Profile setup and management | Work360 Agency",
+    title: "Google Business Profile Agency Australia | Setup & Management | Work360Agency",
     description:
       "Get found on Google Maps. Google Business Profile setup for A$299 and monthly management for A$199. No lock-in. For small businesses in Perth and across Australia.",
     canonical: `${SITE_ORIGIN}/google-business-profile`,
     ogImage: DEFAULT_OG_IMAGE,
     ogType: "website",
-    lastmod: "2026-10-31",
+    lastmod: "2026-11-20",
     jsonLd: [
       {
         "@context": "https://schema.org",
         "@type": "Service",
-        name: "Google Business Profile setup and management",
+        name: "Google Business Profile Setup and Management in Australia",
         description:
           "Get found on Google Maps. Google Business Profile setup for A$299 and monthly management for A$199. No lock-in. For small businesses in Perth and across Australia.",
         url: `${SITE_ORIGIN}/google-business-profile`,
         provider: {
           "@type": "ProfessionalService",
-          name: "Work360 Agency",
+          name: "Work360Agency",
           url: SITE_ORIGIN,
         },
         areaServed: ["Perth, Western Australia", "Australia"],
@@ -232,32 +233,12 @@ export const ROUTE_META: Record<string, RouteMeta> = {
           },
         ],
       },
-      makeFaqPageJsonLd([
-        {
-          question: "Can you guarantee first place on Google Maps?",
-          answer:
-            "No. Nobody can promise that honestly. Google ranks map results by relevance, distance and how well known a business is. We work on the parts you can change.",
-        },
-        {
-          question: "Do I need a website?",
-          answer:
-            "No. You can show up on Google Maps without one, but a website helps Google understand your business.",
-        },
-        {
-          question: "How long until I see results?",
-          answer:
-            "Profile fixes can show changes within a few weeks. Reviews and steady results usually take 3 to 6 months.",
-        },
-        {
-          question: "Do I lose my profile if I stop?",
-          answer: "No. The profile is always yours.",
-        },
-      ]),
+      makeFaqPageJsonLd(GBP_FAQ_ITEMS),
     ],
   },
   "/local-seo": {
     path: "/local-seo",
-    title: "Local SEO for Perth and Australian Small Businesses | Work360 Agency",
+    title: "Local SEO for Perth and Australian Small Businesses | Work360Agency",
     description:
       "Local SEO for small businesses in Perth and across Australia. Website fixes, keyword map, Google profile updates and trusted links. From $900 a month, no lock-in.",
     canonical: `${SITE_ORIGIN}/local-seo`,
@@ -274,7 +255,7 @@ export const ROUTE_META: Record<string, RouteMeta> = {
         url: `${SITE_ORIGIN}/local-seo`,
         provider: {
           "@type": "ProfessionalService",
-          name: "Work360 Agency",
+          name: "Work360Agency",
           url: SITE_ORIGIN,
         },
         areaServed: ["Perth, Western Australia", "Australia"],
@@ -301,7 +282,7 @@ export const ROUTE_META: Record<string, RouteMeta> = {
   },
   "/social-media-management": {
     path: "/social-media-management",
-    title: "Social Media Management for Perth and Australian Small Businesses | Work360 Agency",
+    title: "Social Media Management for Perth and Australian Small Businesses | Work360Agency",
     description:
       "Instagram, Facebook and LinkedIn management for small businesses in Perth and across Australia. 8 posts and 4 Reels a month. From $900 a month, no lock-in.",
     canonical: `${SITE_ORIGIN}/social-media-management`,
@@ -318,7 +299,7 @@ export const ROUTE_META: Record<string, RouteMeta> = {
         url: `${SITE_ORIGIN}/social-media-management`,
         provider: {
           "@type": "ProfessionalService",
-          name: "Work360 Agency",
+          name: "Work360Agency",
           url: SITE_ORIGIN,
         },
         areaServed: ["Perth, Western Australia", "Australia"],
@@ -456,8 +437,8 @@ export const ROUTE_META: Record<string, RouteMeta> = {
   },
   "/privacy": {
     path: "/privacy",
-    title: "Privacy Policy | Work360 Agency",
-    description: "How Work360 Agency collects, uses and protects your information.",
+    title: "Privacy Policy | Work360Agency",
+    description: "How Work360Agency collects, uses and protects your information.",
     canonical: `${SITE_ORIGIN}/privacy`,
     ogImage: DEFAULT_OG_IMAGE,
     ogType: "website",
@@ -465,8 +446,8 @@ export const ROUTE_META: Record<string, RouteMeta> = {
   },
   "/terms": {
     path: "/terms",
-    title: "Terms & Conditions | Work360 Agency",
-    description: "The terms for using the Work360 Agency website and services.",
+    title: "Terms & Conditions | Work360Agency",
+    description: "The terms for using the Work360Agency website and services.",
     canonical: `${SITE_ORIGIN}/terms`,
     ogImage: DEFAULT_OG_IMAGE,
     ogType: "website",
@@ -474,8 +455,8 @@ export const ROUTE_META: Record<string, RouteMeta> = {
   },
   "/refunds": {
     path: "/refunds",
-    title: "Refund Policy | Work360 Agency",
-    description: "When Work360 Agency gives refunds for monthly services and projects.",
+    title: "Refund Policy | Work360Agency",
+    description: "When Work360Agency gives refunds for monthly services and projects.",
     canonical: `${SITE_ORIGIN}/refunds`,
     ogImage: DEFAULT_OG_IMAGE,
     ogType: "website",
@@ -485,7 +466,7 @@ export const ROUTE_META: Record<string, RouteMeta> = {
 
 export const NOT_FOUND_META: RouteMeta = {
   path: "/404",
-  title: "Page not found | Work360 Agency",
+  title: "Page not found | Work360Agency",
   description: "Sorry, we can't find that page. The link may be old or typed wrong.",
   canonical: `${SITE_ORIGIN}/404`,
   ogImage: DEFAULT_OG_IMAGE,

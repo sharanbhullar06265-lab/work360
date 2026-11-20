@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { GBP_FAQ_ITEMS } from "./gbpFaq";
 
 const GBP_CSS = `
 .rwart {
@@ -116,6 +117,57 @@ const GBP_CSS = `
 .rwart-body li {
   margin-bottom: 10px;
 }
+.rwart-body ol {
+  margin: 0 0 26px;
+  padding-left: 24px;
+  list-style-type: decimal;
+}
+.rwart-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin: 0 0 26px;
+  border-radius: 16px;
+  box-shadow: inset 0 0 0 1px var(--rw-fog);
+  background: var(--rw-cloud);
+}
+.rwart-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.rwart-table th,
+.rwart-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--rw-fog);
+}
+.rwart-table tr:last-child th,
+.rwart-table tr:last-child td {
+  border-bottom: 0;
+}
+.rwart-table thead th {
+  font-family: "Geist Mono", "Fragment Mono", ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rw-mut);
+  font-weight: 500;
+}
+.rwart-table tbody th {
+  font-weight: 700;
+  width: 28%;
+}
+@media (max-width: 767px) {
+  .rwart-table {
+    font-size: 15px;
+  }
+  .rwart-table th,
+  .rwart-table td {
+    padding: 12px 12px;
+  }
+}
 .rwart-faq-q {
   display: block;
   font-weight: 700;
@@ -165,7 +217,7 @@ export default function GoogleBusinessProfilePage() {
         </p>
 
         <h1 className="rwart-h1">
-          Google Business Profile setup and management
+          Google Business Profile Setup and Management in Australia
         </h1>
 
         <div className="rwart-short">
@@ -178,6 +230,16 @@ export default function GoogleBusinessProfilePage() {
             Small businesses that want more local customers from Google Maps: farm stalls, cafes, bakeries, home food businesses, salons and tradies. We work with businesses in Perth and across Australia.
           </p>
 
+          <h2 id="what-does-it-include">What does Google Business Profile management include?</h2>
+          <ul>
+            <li><strong>Setup and verification help:</strong> we set up or fix your profile and help you through Google's verification steps.</li>
+            <li><strong>Categories and services:</strong> we pick the right main category and list every service you offer.</li>
+            <li><strong>Details that match everywhere:</strong> name, phone, website, service area and opening hours, the same as your website and Facebook.</li>
+            <li><strong>Photos and posts:</strong> new photos each month (you send them) and one Google post every week.</li>
+            <li><strong>Reviews:</strong> we reply to every review within 2 working days. We always check with you before replying to a bad one.</li>
+            <li><strong>Monthly report:</strong> a simple report with your profile views, calls, direction requests and website clicks.</li>
+          </ul>
+
           <h2 id="what-do-you-get-with-the-setup">What do you get with the setup? (A$299, one time)</h2>
           <ul>
             <li>The right primary and extra categories</li>
@@ -186,51 +248,98 @@ export default function GoogleBusinessProfilePage() {
             <li>A clear description in plain words</li>
             <li>Photos added and sorted</li>
             <li>A review link and QR code for your customers</li>
+            <li>Done within 5 working days once we have your details, photos and access</li>
           </ul>
 
           <h2 id="what-do-you-get-each-month">What do you get each month? (A$199 a month)</h2>
           <ul>
             <li>One Google post every week</li>
-            <li>A reply to every review, good or bad</li>
+            <li>A reply to every review, good or bad, within 2 working days</li>
             <li>New photos added every month (you send them, we upload them)</li>
             <li>Opening hours and holiday hours kept up to date</li>
-            <li>A simple monthly report: how many people viewed your profile, called you and asked for directions</li>
+            <li>A list of the work we did that month</li>
+            <li>A simple monthly report: how many people viewed your profile, called you, asked for directions and clicked to your website</li>
+            <li>Help by email or WhatsApp</li>
           </ul>
+
+          <h2 id="setup-or-monthly">Setup or monthly care: which do I need?</h2>
+          <div className="rwart-table-wrap">
+            <table className="rwart-table">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Setup</th>
+                  <th scope="col">Monthly care</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Price</th>
+                  <td>A$299, one time</td>
+                  <td>A$199 a month</td>
+                </tr>
+                <tr>
+                  <th scope="row">What you get</th>
+                  <td>Category, services, details, hours, description, photos, review link and QR code</td>
+                  <td>4 Google posts, review replies, new photos, hours updates, monthly report</td>
+                </tr>
+                <tr>
+                  <th scope="row">Time</th>
+                  <td>Within 5 working days</td>
+                  <td>Ongoing, cancel with 30 days notice</td>
+                </tr>
+                <tr>
+                  <th scope="row">Good for</th>
+                  <td>A profile that is missing or messy</td>
+                  <td>Owners who want it kept fresh without doing it themselves</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>You can buy setup on its own. Monthly care is optional.</p>
+
+          <h2 id="how-it-works">How it works</h2>
+          <ol>
+            <li><strong>Free audit:</strong> we check your profile and tell you what is missing.</li>
+            <li><strong>Access:</strong> you add us as a Manager. You stay the owner.</li>
+            <li><strong>Setup:</strong> done within 5 working days once we have your details, photos and access.</li>
+            <li><strong>Every month:</strong> weekly posts, review replies, photo and hours updates.</li>
+            <li><strong>Report:</strong> a plain report at the end of each month.</li>
+          </ol>
+          <p>Everything happens by email or WhatsApp.</p>
+
+          <h2 id="who-can-have-a-profile">Who can have a Google Business Profile?</h2>
+          <p>
+            Businesses that meet customers face to face: at a shop, office or farm stall, or by visiting customers (like plumbers, cleaners or mobile dog walkers). Businesses that only sell online, with no in-person contact, are not allowed a profile by Google.
+          </p>
 
           <h2 id="what-results-have-we-seen">What results have we seen?</h2>
           <p>
-            We look after the Google Business Profile for a farm stall in Perth. Between May and October 2026, 4,843 people viewed the profile, 295 asked Google for directions and 189 clicked through to the website.
+            We look after the Google Business Profile for West Road Farm, a farm stall in Western Australia. In 4 months, profile views grew from 49 to 2,209 a month. Between May and October 2026, 4,843 people viewed the profile, 295 asked Google for directions and 189 clicked through to the website.
+          </p>
+          <p>
+            Profile views are not the same as sales, but they show more people are finding the business.
           </p>
 
-          <h2 id="how-we-work">How we work</h2>
+          <h2 id="our-promises">Our promises to you</h2>
           <ul>
-            <li>No lock-in contract. Cancel any time with 30 days notice.</li>
-            <li>Your profile stays in your name. You stay the owner, we are added as a manager.</li>
-            <li>Plain English reports, no jargon.</li>
+            <li><strong>You own your profile. Always.</strong> You stay the owner. We are added as a Manager, never the owner.</li>
+            <li><strong>Leaving is easy.</strong> Cancel with 30 days notice. No lock-in and no auto-renew traps. When you leave, we remove ourselves from your profile and you keep everything.</li>
+            <li><strong>You see exactly what we did.</strong> Every month you get a list of the work done and a plain report with views, calls, directions and website clicks. Not just likes.</li>
+            <li><strong>You deal with the person doing the work.</strong> Sharanpreet, the founder, does your work himself.</li>
+            <li><strong>No fake promises.</strong> Nobody can guarantee first place on Google, so we never will.</li>
+            <li><strong>Real reviews only.</strong> We never buy reviews or offer discounts for reviews. It is against the law in Australia.</li>
             <li>Prices are in Australian dollars.</li>
           </ul>
 
           <h2 id="questions-people-ask">Questions people ask</h2>
 
-          <p>
-            <strong className="rwart-faq-q">Can you guarantee first place on Google Maps?</strong>
-            No. Nobody can promise that honestly. Google ranks map results by relevance, distance and how well known a business is. We work on the parts you can change.
-          </p>
-
-          <p>
-            <strong className="rwart-faq-q">Do I need a website?</strong>
-            No. You can show up on Google Maps without one, but a website helps Google understand your business.
-          </p>
-
-          <p>
-            <strong className="rwart-faq-q">How long until I see results?</strong>
-            Profile fixes can show changes within a few weeks. Reviews and steady results usually take 3 to 6 months.
-          </p>
-
-          <p>
-            <strong className="rwart-faq-q">Do I lose my profile if I stop?</strong>
-            No. The profile is always yours.
-          </p>
+          {GBP_FAQ_ITEMS.map((item) => (
+            <p key={item.question}>
+              <strong className="rwart-faq-q">{item.question}</strong>
+              {item.answer}
+            </p>
+          ))}
 
           <hr className="rwart-hr" />
 

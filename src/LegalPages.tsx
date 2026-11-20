@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-const HOME_TITLE = "Work360 Agency | Digital Marketing for Perth and Australian Small Businesses";
+const HOME_TITLE = "Work360Agency | Digital Marketing for Perth and Australian Small Businesses";
 const HOME_DESC =
   "Your Brand. Our 360° Approach. We help small businesses in Australia get found on Google, look great online and get more customers.";
 
@@ -146,7 +146,7 @@ function usePageMeta(_title: string, _description: string, _canonicalPath: strin
 
 export function NotFoundPage() {
   usePageMeta(
-    "Page not found | Work360 Agency",
+    "Page not found | Work360Agency",
     "Sorry, we can't find that page. The link may be old or typed wrong.",
     "/404"
   );
@@ -225,8 +225,8 @@ export function NotFoundPage() {
 
 export function PrivacyPolicyPage() {
   usePageMeta(
-    "Privacy Policy | Work360 Agency",
-    "How Work360 Agency collects, uses and protects your information.",
+    "Privacy Policy | Work360Agency",
+    "How Work360Agency collects, uses and protects your information.",
     "/privacy"
   );
 
@@ -241,12 +241,12 @@ export function PrivacyPolicyPage() {
         <h1 className="rwart-h1">Privacy Policy</h1>
 
         <p className="rwart-meta">
-          <span>LAST UPDATED: 18 NOVEMBER 2026</span>
+          <span>LAST UPDATED: 20 NOVEMBER 2026</span>
         </p>
 
         <div className="rwart-body">
           <p>
-            This page explains what information Work360 Agency ("Work360", "we", "us") collects, why we collect it and how we look after it.
+            This page explains what information Work360Agency ("Work360", "we", "us") collects, why we collect it and how we look after it.
           </p>
 
           <h2>What we collect</h2>
@@ -299,13 +299,13 @@ export function PrivacyPolicyPage() {
 
           <h2>Where your information is stored</h2>
           <p>
-            Work360 Agency is run from India. Your information may be stored or processed in India and by the online tools we use to run our business (for example website hosting, email, analytics and advertising platforms). We only share what these tools need to do their job.
+            Work360Agency is run from India. Your information may be stored or processed in India and by the online tools we use to run our business (for example website hosting, email, analytics and advertising platforms). We only share what these tools need to do their job.
           </p>
 
           <h2>Your choices</h2>
           <p>
             You can ask us to see, correct or delete your information, or to stop using it, at any time. Email us at{" "}
-            <a href="mailto:work360agency@gmail.com">work360agency@gmail.com</a> and we aim to reply within 30 days.
+            <a href="mailto:work360agency@gmail.com">work360agency@gmail.com</a>. We aim to reply within 2 working days and to complete your request within 30 days.
           </p>
 
           <h2>Australian clients</h2>
@@ -325,7 +325,7 @@ export function PrivacyPolicyPage() {
           <p>
             We handle these requests in line with the law that applies, including India's Digital Personal Data Protection Act, 2023. Email{" "}
             <a href="mailto:work360agency@gmail.com">work360agency@gmail.com</a>{" "}
-            and we will reply within 24 hours and act on your request within 7 working days.
+            and we aim to reply within 2 working days and to complete your request within 30 days.
           </p>
 
           <h2>Complaints about your data</h2>
@@ -350,8 +350,8 @@ export function PrivacyPolicyPage() {
 
 export function TermsConditionsPage() {
   usePageMeta(
-    "Terms & Conditions | Work360 Agency",
-    "The terms for using the Work360 Agency website and services.",
+    "Terms & Conditions | Work360Agency",
+    "The terms for using the Work360Agency website and services.",
     "/terms"
   );
 
@@ -371,7 +371,7 @@ export function TermsConditionsPage() {
 
         <div className="rwart-body">
           <p>
-            These terms apply when you use the Work360 Agency website or work with Work360 Agency ("Work360", "we", "us"). By using our website or our services, you agree to these terms.
+            These terms apply when you use the Work360Agency website or work with Work360Agency ("Work360", "we", "us"). By using our website or our services, you agree to these terms.
           </p>
 
           <h2>Our services</h2>
@@ -443,7 +443,7 @@ export function TermsConditionsPage() {
 
           <h2>Who we are</h2>
           <p>
-            Work360 Agency is run by Sharanpreet Singh as a sole trader based in Punjab, India.
+            Work360Agency is run by Sharanpreet Singh as a sole trader based in Punjab, India.
           </p>
 
           <h2>Governing law and disputes</h2>
@@ -466,8 +466,8 @@ export function TermsConditionsPage() {
 
 export function RefundPolicyPage() {
   usePageMeta(
-    "Refund Policy | Work360 Agency",
-    "When Work360 Agency gives refunds for monthly services and projects.",
+    "Refund Policy | Work360Agency",
+    "When Work360Agency gives refunds for monthly services and projects.",
     "/refunds"
   );
 
@@ -482,12 +482,12 @@ export function RefundPolicyPage() {
         <h1 className="rwart-h1">Refund Policy</h1>
 
         <p className="rwart-meta">
-          <span>LAST UPDATED: 31 OCTOBER 2026</span>
+          <span>LAST UPDATED: 20 NOVEMBER 2026</span>
         </p>
 
         <div className="rwart-body">
           <p>
-            This page explains when Work360 Agency ("Work360", "we", "us") gives refunds.
+            This page explains when Work360Agency ("Work360", "we", "us") gives refunds.
           </p>
 
           <h2>Monthly services</h2>
@@ -520,6 +520,11 @@ export function RefundPolicyPage() {
           <h2>How to ask for a refund</h2>
           <p>
             Email <a href="mailto:work360agency@gmail.com">work360agency@gmail.com</a> with your name, business name and invoice number. We reply within 24 hours. If a refund is approved, we send it back to the same payment method within 7 to 14 working days.
+          </p>
+
+          <h2>Your rights under Australian law</h2>
+          <p>
+            Nothing in this policy removes or limits any rights you have that cannot be removed under Australian law, including the Australian Consumer Law where it applies.
           </p>
 
           <h2>Changes to this page</h2>
