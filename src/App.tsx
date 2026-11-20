@@ -30,6 +30,7 @@ import RwFaq from "./rw/RwFaq.jsx";
 import RwJournal from "./rw/RwJournal.jsx";
 import RwCta from "./rw/RwCta.jsx";
 import RwFooter from "./rw/RwFooter.jsx";
+import RwContactFab from "./RwContactFab";
 
 const THEME_TOKENS = {
   bone: "var(--token-9237d7aa-ae04-4663-8b83-ee7cccdc8605)",
@@ -1140,7 +1141,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
           hint="Move over the name"
           layer={9}
           legal="Privacy:/privacy, Terms:/terms, Refunds:/refunds"
-          madeWith="Built by Work360"
+          madeWith="Built by Work360Agency"
           madeWithLink=""
           resources="Blog:/#blog, Pricing:/#pricing, FAQ:/#faq"
           resourcesTitle="Resources"
@@ -1150,6 +1151,9 @@ export default function App({ initialPath }: { initialPath?: string }) {
           style={{ width: "100%" }}
         />
       </div>
+
+      {/* Floating Message us button: Messenger + WhatsApp */}
+      <RwContactFab />
     </div>
   );
 }
