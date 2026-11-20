@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 // Opens 2 choices: Facebook Messenger (first, more used in Australia) and WhatsApp.
 // Also sends GA4 events: messenger_click, whatsapp_click, audit_click.
 
-const MESSENGER_URL = "https://m.me/work360agency";
+const MESSENGER_URL = "https://m.me/61594351830779";
 const WHATSAPP_URL =
   "https://wa.me/918872717771?text=" +
   encodeURIComponent("Hi Work360Agency, I'd like a free audit for my business.");
