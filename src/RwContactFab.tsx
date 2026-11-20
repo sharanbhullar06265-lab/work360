@@ -9,6 +9,23 @@ const WHATSAPP_URL =
   "https://wa.me/918872717771?text=" +
   encodeURIComponent("Hi Work360Agency, I'd like a free audit for my business.");
 
+// Send the event first, then open the app (iPhone can stop the page before the event is sent).
+function trackThenGo(e: React.MouseEvent<HTMLAnchorElement>, name: string, url: string) {
+  try {
+    const g = (window as any).gtag;
+    if (typeof g !== "function") return;
+    e.preventDefault();
+    let done = false;
+    const go = () => {
+      if (done) return;
+      done = true;
+      window.location.href = url;
+    };
+    g("event", name, { page_path: window.location.pathname, transport_type: "beacon", event_callback: go, event_timeout: 700 });
+    window.setTimeout(go, 800);
+  } catch {}
+}
+
 function track(name: string, params: Record<string, string> = {}) {
   try {
     const g = (window as any).gtag;
@@ -99,7 +116,7 @@ export default function RwContactFab() {
             href={MESSENGER_URL}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => track("messenger_click")}
+            onClick={(e) => trackThenGo(e, "messenger_click", MESSENGER_URL)}
           >
             <MessengerIcon />
             <span>
@@ -113,7 +130,7 @@ export default function RwContactFab() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => track("whatsapp_click")}
+            onClick={(e) => trackThenGo(e, "whatsapp_click", WHATSAPP_URL)}
           >
             <WhatsAppIcon />
             <span>
