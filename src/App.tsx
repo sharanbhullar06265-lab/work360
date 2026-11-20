@@ -442,7 +442,7 @@ export const ROUTE_META: Record<string, RouteMeta> = {
     canonical: `${SITE_ORIGIN}/privacy`,
     ogImage: DEFAULT_OG_IMAGE,
     ogType: "website",
-    lastmod: "2026-10-31",
+    lastmod: "2026-11-20",
   },
   "/terms": {
     path: "/terms",
@@ -451,7 +451,7 @@ export const ROUTE_META: Record<string, RouteMeta> = {
     canonical: `${SITE_ORIGIN}/terms`,
     ogImage: DEFAULT_OG_IMAGE,
     ogType: "website",
-    lastmod: "2026-10-31",
+    lastmod: "2026-11-20",
   },
   "/refunds": {
     path: "/refunds",
@@ -460,7 +460,7 @@ export const ROUTE_META: Record<string, RouteMeta> = {
     canonical: `${SITE_ORIGIN}/refunds`,
     ogImage: DEFAULT_OG_IMAGE,
     ogType: "website",
-    lastmod: "2026-10-31",
+    lastmod: "2026-11-20",
   },
 };
 

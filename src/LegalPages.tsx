@@ -366,7 +366,7 @@ export function TermsConditionsPage() {
         <h1 className="rwart-h1">Terms &amp; Conditions</h1>
 
         <p className="rwart-meta">
-          <span>LAST UPDATED: 18 NOVEMBER 2026</span>
+          <span>LAST UPDATED: 20 NOVEMBER 2026</span>
         </p>
 
         <div className="rwart-body">
@@ -438,7 +438,7 @@ export function TermsConditionsPage() {
 
           <h2>Support and complaints</h2>
           <p>
-            Email <a href="mailto:work360agency@gmail.com">work360agency@gmail.com</a>. We reply within 24 hours and aim to resolve complaints within 7 working days.
+            Email <a href="mailto:work360agency@gmail.com">work360agency@gmail.com</a>. We aim to reply within 2 working days and to resolve complaints within 7 working days.
           </p>
 
           <h2>Who we are</h2>
@@ -519,7 +519,7 @@ export function RefundPolicyPage() {
 
           <h2>How to ask for a refund</h2>
           <p>
-            Email <a href="mailto:work360agency@gmail.com">work360agency@gmail.com</a> with your name, business name and invoice number. We reply within 24 hours. If a refund is approved, we send it back to the same payment method within 7 to 14 working days.
+            Email <a href="mailto:work360agency@gmail.com">work360agency@gmail.com</a> with your name, business name and invoice number. We aim to reply within 2 working days. If a refund is approved, we send it back to the same payment method within 7 to 14 working days.
           </p>
 
           <h2>Your rights under Australian law</h2>
