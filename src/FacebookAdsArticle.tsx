@@ -436,7 +436,7 @@ export default function FacebookAdsArticle() {
           </p>
 
           <p>
-            Ads stop when the money stops. A strong <a href="/google-business-profile">Google Business Profile</a> keeps bringing local customers for free.
+            Ads stop when the budget stops. A well-kept <a href="/google-business-profile">Google Business Profile</a> can keep bringing local customers without ad spend.
           </p>
 
           <div className="rwart-cta-wrap">
