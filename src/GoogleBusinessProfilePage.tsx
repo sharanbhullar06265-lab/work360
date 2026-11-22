@@ -341,6 +341,10 @@ export default function GoogleBusinessProfilePage() {
             </p>
           ))}
 
+          <p>
+            Want to show up higher in Google search too? See our <a href="/local-seo">Local SEO service</a> and our guide to <a href="/blog/local-seo-perth">local SEO in Perth</a>.
+          </p>
+
           <hr className="rwart-hr" />
 
           <div className="rwart-cta-wrap">

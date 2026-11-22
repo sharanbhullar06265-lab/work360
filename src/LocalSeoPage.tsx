@@ -200,6 +200,10 @@ export default function LocalSeoPage() {
             Your website and Google profile stay yours.
           </p>
 
+          <p>
+            Only need your Google profile fixed? See our <a href="/google-business-profile">Google profile setup, from A$299</a>.
+          </p>
+
           <p>All prices in AUD.</p>
 
           <hr className="rwart-hr" />

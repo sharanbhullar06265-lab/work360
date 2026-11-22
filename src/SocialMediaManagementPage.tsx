@@ -205,6 +205,10 @@ export default function SocialMediaManagementPage() {
             You do. We are added as partners.
           </p>
 
+          <p>
+            Want to show up on Google Maps as well? See our <a href="/google-business-profile">Google Business Profile service</a>.
+          </p>
+
           <p>All prices in AUD.</p>
 
           <hr className="rwart-hr" />

@@ -435,6 +435,10 @@ export default function FacebookAdsArticle() {
             Want us to <a href="/#services">check your ads</a>? Fill in the free audit form and we'll send you a written plan on email or WhatsApp.
           </p>
 
+          <p>
+            Ads stop when the money stops. A strong <a href="/google-business-profile">Google Business Profile</a> keeps bringing local customers for free.
+          </p>
+
           <div className="rwart-cta-wrap">
             <a href="/#free-audit" className="rw-btn rw-solid rwart-btn">
               <span className="rw-face">

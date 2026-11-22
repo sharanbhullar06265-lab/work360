@@ -443,6 +443,10 @@ export default function InstagramReelsArticle() {
             Want us to make your Reels? See our <a href="/social-media-management">social media service</a>.
           </p>
 
+          <p>
+            Want more locals to find you on Google Maps too? We can <a href="/google-business-profile">set up and look after your Google profile</a>.
+          </p>
+
           <div className="rwart-cta-wrap">
             <a href="/#free-audit" className="rw-btn rw-solid rwart-btn">
               <span className="rw-face">
