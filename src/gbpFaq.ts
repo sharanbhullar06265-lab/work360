@@ -42,6 +42,6 @@ export const GBP_FAQ_ITEMS: Array<{ question: string; answer: string }> = [
   {
     question: "What if my profile is suspended?",
     answer:
-      "We look at why and help you send a reinstatement request to Google. We can't promise Google will approve it.",
+      "We check the likely reason for free. If you want help with the appeal, it's A$199 one time, and free for monthly care clients. We prepare the appeal and you send it to Google yourself. We can't promise Google will approve it.",
   },
 ];

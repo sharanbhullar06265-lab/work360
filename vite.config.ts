@@ -29,6 +29,7 @@ const VALID_ROUTES = new Set([
   '/blog/local-seo-perth',
   '/blog/instagram-reels-small-business',
   '/blog/facebook-ads-small-business',
+  '/blog/google-business-profile-suspended',
   '/privacy',
   '/terms',
   '/refunds',

@@ -260,6 +260,7 @@ export default function GoogleBusinessProfilePage() {
             <li>A list of the work we did that month</li>
             <li>A simple monthly report: how many people viewed your profile, called you, asked for directions and clicked to your website</li>
             <li>Help by email or WhatsApp</li>
+            <li>Help if your profile is suspended, included free (see our <a href="/blog/google-business-profile-suspended">guide to a suspended Google profile</a>)</li>
           </ul>
 
           <h2 id="setup-or-monthly">Setup or monthly care: which do I need?</h2>

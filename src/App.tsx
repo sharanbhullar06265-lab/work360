@@ -8,6 +8,8 @@ import { CmsBridge, CMS_ROWS } from "./cmsData";
 import LocalSeoPerthArticle from "./LocalSeoPerthArticle";
 import InstagramReelsArticle from "./InstagramReelsArticle";
 import FacebookAdsArticle from "./FacebookAdsArticle";
+import GbpSuspendedArticle from "./GbpSuspendedArticle";
+import { GBP_SUSPENDED_FAQ } from "./gbpSuspendedFaq";
 import GoogleBusinessProfilePage from "./GoogleBusinessProfilePage";
 import { GBP_FAQ_ITEMS } from "./gbpFaq";
 import LocalSeoPage from "./LocalSeoPage";
@@ -436,6 +438,27 @@ export const ROUTE_META: Record<string, RouteMeta> = {
       ]),
     ],
   },
+  "/blog/google-business-profile-suspended": {
+    path: "/blog/google-business-profile-suspended",
+    title: "Google Business Profile Suspended? How to Get It Back",
+    description:
+      "Google Business Profile suspended? Learn why it happens, what to check before you appeal, which Australian papers to send, and how to get it back safely.",
+    canonical: `${SITE_ORIGIN}/blog/google-business-profile-suspended`,
+    ogImage: DEFAULT_OG_IMAGE,
+    ogType: "article",
+    lastmod: "2026-11-22",
+    jsonLd: [
+      makeBlogPostingJsonLd({
+        headline: "Google Business Profile Suspended? How to Get It Back",
+        description:
+          "Google Business Profile suspended? Learn why it happens, what to check before you appeal, which Australian papers to send, and how to get it back safely.",
+        canonical: `${SITE_ORIGIN}/blog/google-business-profile-suspended`,
+        image: DEFAULT_OG_IMAGE,
+        datePublished: "2026-11-22",
+      }),
+      makeFaqPageJsonLd(GBP_SUSPENDED_FAQ),
+    ],
+  },
   "/privacy": {
     path: "/privacy",
     title: "Privacy Policy | Work360Agency",
@@ -489,6 +512,7 @@ const BLOG_ARTICLE_PATHS = new Set([
   "/blog/local-seo-perth",
   "/blog/instagram-reels-small-business",
   "/blog/facebook-ads-small-business",
+  "/blog/google-business-profile-suspended",
   "/privacy",
   "/terms",
   "/refunds",
@@ -840,6 +864,10 @@ export default function App({ initialPath }: { initialPath?: string }) {
       ) : currentPath === "/blog/facebook-ads-small-business" ? (
         <main style={{ width: "100%", position: "relative", zIndex: 1 }}>
           <FacebookAdsArticle />
+        </main>
+      ) : currentPath === "/blog/google-business-profile-suspended" ? (
+        <main style={{ width: "100%", position: "relative", zIndex: 1 }}>
+          <GbpSuspendedArticle />
         </main>
       ) : currentPath === "/privacy" ? (
         <main style={{ width: "100%", position: "relative", zIndex: 1 }}>
