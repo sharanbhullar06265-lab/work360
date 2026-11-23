@@ -166,7 +166,7 @@ const fbAdsDate = getPostIsoDate("facebook-ads-small-business");
 export const ROUTE_META: Record<string, RouteMeta> = {
   "/": {
     path: "/",
-    title: "Work360Agency | Digital Marketing for Perth and Australian Small Businesses",
+    title: "Digital Marketing Agency for Perth & Australia | Work360Agency",
     description:
       "Digital marketing for small businesses in Perth and across Australia. Google profile, local SEO, social media and ads, with plain monthly reports and no lock-in.",
     canonical: `${SITE_ORIGIN}/`,
@@ -194,7 +194,7 @@ export const ROUTE_META: Record<string, RouteMeta> = {
   },
   "/google-business-profile": {
     path: "/google-business-profile",
-    title: "Google Business Profile Agency Australia | Setup & Management | Work360Agency",
+    title: "Google Business Profile Agency Australia | Work360Agency",
     description:
       "Get found on Google Maps. Google Business Profile setup for A$299 and monthly management for A$199. No lock-in. For small businesses in Perth and across Australia.",
     canonical: `${SITE_ORIGIN}/google-business-profile`,
@@ -285,7 +285,7 @@ export const ROUTE_META: Record<string, RouteMeta> = {
   },
   "/social-media-management": {
     path: "/social-media-management",
-    title: "Social Media Management for Perth and Australian Small Businesses | Work360Agency",
+    title: "Social Media Management Perth & Australia | Work360Agency",
     description:
       "Instagram, Facebook and LinkedIn management for small businesses in Perth and across Australia. 8 posts and 4 Reels a month. From $900 a month, no lock-in.",
     canonical: `${SITE_ORIGIN}/social-media-management`,

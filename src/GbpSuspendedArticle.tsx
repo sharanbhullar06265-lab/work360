@@ -194,6 +194,22 @@ const ARTICLE_CSS = `
   color: var(--rw-mut);
   margin: 0 0 20px !important;
 }
+.rwart-mid {
+  margin: 28px 0 !important;
+  padding: 20px 22px;
+  border: 1px solid var(--rw-fog);
+  border-left: 4px solid #FF7A1A;
+  border-radius: 14px;
+}
+.rwart-mid p {
+  margin: 0 0 6px !important;
+}
+.rwart-mid-h {
+  font-weight: 700;
+}
+.rwart-mid a {
+  font-weight: 700;
+}
 .rwart-cta-wrap {
   margin-top: 24px;
 }
@@ -344,6 +360,12 @@ export default function GbpSuspendedArticle() {
             If your warning says "suspicious activity", look at recent changes to the profile and at who has access to it. A manager you don't recognise is a red flag.
           </p>
 
+          <aside className="rwart-mid" aria-label="Free check">
+            <p className="rwart-mid-h">Not sure why yours was suspended?</p>
+            <p>Send us your business name and we'll tell you the likely reason, free.</p>
+            <p><a href="/#free-audit">Get a free check &rarr;</a></p>
+          </aside>
+
           <h2 id="what-should-i-check-before-i-appeal">What should I check before I appeal?</h2>
 
           <p>
@@ -362,6 +384,12 @@ export default function GbpSuspendedArticle() {
             <li><strong>Get your papers ready</strong> before you start the appeal (see the list below).</li>
             <li><strong>Write a short, calm explanation.</strong> Two or three sentences: what your business is, what you fixed, and what you're attaching. No anger, no long story.</li>
           </ol>
+
+          <aside className="rwart-mid" aria-label="Free check">
+            <p className="rwart-mid-h">Only one appeal. Make it count.</p>
+            <p>We check your profile against Google's rules and list the papers you need before you send anything.</p>
+            <p><a href="/#free-audit">Check my profile first &rarr;</a></p>
+          </aside>
 
           <h2 id="how-do-i-send-the-appeal">How do I send the appeal?</h2>
 
