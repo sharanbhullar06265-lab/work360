@@ -895,7 +895,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
             chips="❤|1.2k likes on one reel;+|86 new followers;★|New 5-star review;#1|“dentist near me”;●|12 leads today;↗|CTR up to 4.8%;✓|Call booked · Tue 10:30;◎|+318 profile visits;▶|48k video views;$|ROAS 6.2×"
             counterLabel="VIEWS FOR OUR CLIENTS"
             counterStart={270461}
-            eyebrow="Now booking · Free audit for Aussie businesses"
+            eyebrow="Digital marketing agency for Perth & Australia"
             focusX={50}
             focusY={50}
             heading="Get seen by|the *right crowd.*"
