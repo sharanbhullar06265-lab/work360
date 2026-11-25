@@ -30,6 +30,7 @@ const VALID_ROUTES = new Set([
   '/blog/instagram-reels-small-business',
   '/blog/facebook-ads-small-business',
   '/blog/google-business-profile-suspended',
+  '/case-studies/west-road-farm',
   '/privacy',
   '/terms',
   '/refunds',

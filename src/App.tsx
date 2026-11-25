@@ -9,6 +9,7 @@ import LocalSeoPerthArticle from "./LocalSeoPerthArticle";
 import InstagramReelsArticle from "./InstagramReelsArticle";
 import FacebookAdsArticle from "./FacebookAdsArticle";
 import GbpSuspendedArticle from "./GbpSuspendedArticle";
+import WestRoadFarmCaseStudy from "./WestRoadFarmCaseStudy";
 import { GBP_SUSPENDED_FAQ } from "./gbpSuspendedFaq";
 import GoogleBusinessProfilePage from "./GoogleBusinessProfilePage";
 import { GBP_FAQ_ITEMS } from "./gbpFaq";
@@ -459,6 +460,26 @@ export const ROUTE_META: Record<string, RouteMeta> = {
       makeFaqPageJsonLd(GBP_SUSPENDED_FAQ),
     ],
   },
+  "/case-studies/west-road-farm": {
+    path: "/case-studies/west-road-farm",
+    title: "West Road Farm Case Study: Google Profile Growth | Work360Agency",
+    description:
+      "How a Swan Valley farm stall grew from 49 Google profile views in June to 1,653 in September 2026 with organic marketing. Real reports, honest notes.",
+    canonical: `${SITE_ORIGIN}/case-studies/west-road-farm`,
+    ogImage: DEFAULT_OG_IMAGE,
+    ogType: "article",
+    lastmod: "2026-11-25",
+    jsonLd: [
+      makeBlogPostingJsonLd({
+        headline: "West Road Farm: More Local People Discovering the Farm",
+        description:
+          "How a Swan Valley farm stall grew from 49 Google profile views in June to 1,653 in September 2026 with organic marketing. Real reports, honest notes.",
+        canonical: `${SITE_ORIGIN}/case-studies/west-road-farm`,
+        image: DEFAULT_OG_IMAGE,
+        datePublished: "2026-11-25",
+      }),
+    ],
+  },
   "/privacy": {
     path: "/privacy",
     title: "Privacy Policy | Work360Agency",
@@ -513,6 +534,7 @@ const BLOG_ARTICLE_PATHS = new Set([
   "/blog/instagram-reels-small-business",
   "/blog/facebook-ads-small-business",
   "/blog/google-business-profile-suspended",
+  "/case-studies/west-road-farm",
   "/privacy",
   "/terms",
   "/refunds",
@@ -868,6 +890,10 @@ export default function App({ initialPath }: { initialPath?: string }) {
       ) : currentPath === "/blog/google-business-profile-suspended" ? (
         <main style={{ width: "100%", position: "relative", zIndex: 1 }}>
           <GbpSuspendedArticle />
+        </main>
+      ) : currentPath === "/case-studies/west-road-farm" ? (
+        <main style={{ width: "100%", position: "relative", zIndex: 1 }}>
+          <WestRoadFarmCaseStudy />
         </main>
       ) : currentPath === "/privacy" ? (
         <main style={{ width: "100%", position: "relative", zIndex: 1 }}>
