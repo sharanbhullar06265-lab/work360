@@ -142,7 +142,7 @@ export default function SocialMediaManagementPage() {
         </a>
 
         <h1 className="rwart-h1">
-          Social media management for small businesses in Perth and across Australia
+          Social media management and agency services for small businesses in Perth and across Australia
         </h1>
 
         <div className="rwart-short">

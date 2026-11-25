@@ -229,6 +229,9 @@ export default function GoogleBusinessProfilePage() {
           <p>
             Small businesses that want more local customers from Google Maps: farm stalls, cafes, bakeries, home food businesses, salons and tradies. We work with businesses in Perth and across Australia.
           </p>
+          <p>
+            Need a Google Business Profile expert in Perth or anywhere in WA? We work remotely with businesses across Perth and Western Australia, and the rest of Australia.
+          </p>
 
           <h2 id="what-does-it-include">What does Google Business Profile management include?</h2>
           <ul>
