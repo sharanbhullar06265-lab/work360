@@ -174,6 +174,7 @@ export const ROUTE_META: Record<string, RouteMeta> = {
     canonical: `${SITE_ORIGIN}/`,
     ogImage: DEFAULT_OG_IMAGE,
     ogType: "website",
+    lastmod: "2026-11-25",
     jsonLd: [
       {
         "@context": "https://schema.org",
@@ -202,7 +203,7 @@ export const ROUTE_META: Record<string, RouteMeta> = {
     canonical: `${SITE_ORIGIN}/google-business-profile`,
     ogImage: DEFAULT_OG_IMAGE,
     ogType: "website",
-    lastmod: "2026-11-20",
+    lastmod: "2026-11-25",
     jsonLd: [
       {
         "@context": "https://schema.org",
@@ -249,7 +250,7 @@ export const ROUTE_META: Record<string, RouteMeta> = {
     canonical: `${SITE_ORIGIN}/local-seo`,
     ogImage: DEFAULT_OG_IMAGE,
     ogType: "website",
-    lastmod: "2026-10-31",
+    lastmod: "2026-11-25",
     jsonLd: [
       {
         "@context": "https://schema.org",
@@ -293,7 +294,7 @@ export const ROUTE_META: Record<string, RouteMeta> = {
     canonical: `${SITE_ORIGIN}/social-media-management`,
     ogImage: DEFAULT_OG_IMAGE,
     ogType: "website",
-    lastmod: "2026-10-31",
+    lastmod: "2026-11-25",
     jsonLd: [
       {
         "@context": "https://schema.org",
