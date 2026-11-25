@@ -10,6 +10,7 @@ import InstagramReelsArticle from "./InstagramReelsArticle";
 import FacebookAdsArticle from "./FacebookAdsArticle";
 import GbpSuspendedArticle from "./GbpSuspendedArticle";
 import WestRoadFarmCaseStudy from "./WestRoadFarmCaseStudy";
+import RwWhoWeHelp from "./RwWhoWeHelp";
 import { GBP_SUSPENDED_FAQ } from "./gbpSuspendedFaq";
 import GoogleBusinessProfilePage from "./GoogleBusinessProfilePage";
 import { GBP_FAQ_ITEMS } from "./gbpFaq";
@@ -999,6 +1000,10 @@ export default function App({ initialPath }: { initialPath?: string }) {
             webUrl="yoursite.com/offer"
             style={{ width: "100%" }}
           />
+        </div>
+
+        <div id="who-we-help">
+          <RwWhoWeHelp {...THEME_TOKENS} />
         </div>
 
         {/* (03) Case Studies — Before / After Slider */}
