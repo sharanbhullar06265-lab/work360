@@ -972,7 +972,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
             heading="Everyone is a|crowd. We find|*your brand*."
             ratioLabel="1 in"
             ratioTail="is your buyer"
-            subCopy="Most local businesses aren't invisible. They're just showing up in the wrong places. We find where your customers search, scroll and ask, and put you there."
+            subCopy="Most local businesses aren't invisible. They're just showing up in the wrong places. We find where your customers search, scroll and ask, and put you there. You work directly with founder Sharanpreet Singh. Your accounts stay yours. No lock-in, just 30 days' notice."
             style={{ width: "100%" }}
           />
         </div>
@@ -1172,7 +1172,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
             spotsNote="Start any time"
             spotsTitle="Taking new clients now"
             spotsTotal={8}
-            sub="Get a free audit of your site, socials and ads. We send you a written plan, and you keep it whether we work together or not."
+            sub="Get a free audit of your Google profile, website, socials and ads. You get a written report showing what to fix first, and you keep it whether we work together or not."
             teamNote="Founder-led, remote"
             style={{ width: "100%" }}
           />
