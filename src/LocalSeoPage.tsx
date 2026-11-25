@@ -166,7 +166,7 @@ export default function LocalSeoPage() {
 
           <h2 id="what-results-have-we-seen">What results have we seen?</h2>
           <p>
-            West Road Farm, a farm stall in Western Australia: Google profile views went from 49 to 2,209 a month in 4 months. Between May and October 2026 the profile got 4,843 views, 295 direction requests and 189 website clicks.
+            West Road Farm, a farm stall in Western Australia: In September 2026, our first full month of work, 1,653 people viewed the profile and there were 98 profile interactions (calls, directions, website clicks and messages).
           </p>
 
           <h2 id="how-we-work">How we work</h2>

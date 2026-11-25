@@ -333,7 +333,7 @@ export default function LocalSeoPerthArticle() {
           <h2 id="what-did-a-real-perth-business-profile-show-us">What did a real Perth business profile show us?</h2>
 
           <p>
-            We look after the <a href="/google-business-profile">Google Business Profile</a> for a farm stall in Perth. Between May and October 2026, 4,843 people viewed the profile, 295 asked Google for directions, and 189 clicked through to the website.
+            We look after the <a href="/google-business-profile">Google Business Profile</a> for a farm stall in Perth. In September 2026, our first full month of work, 1,653 people viewed the profile and there were 98 profile interactions (calls, directions, website clicks and messages).
           </p>
 
           <p>

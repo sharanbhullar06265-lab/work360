@@ -942,7 +942,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
             clusters="Search|312|searching “café near me”;Feeds|1,204|following #perthfood;Audiences|88|lookalikes"
             crowdLabel="locals near you"
             eyebrow="(01) Why Work360"
-            facts="Founded 2026;Remote team;Serving Australia"
+            facts="Founded 2026;Founder-led, remote;Serving Australia"
             heading="Everyone is a|crowd. We find|*your brand*."
             ratioLabel="1 in"
             ratioTail="is your buyer"
@@ -1020,10 +1020,10 @@ export default function App({ initialPath }: { initialPath?: string }) {
             eyebrow="(05) The numbers"
             heading="Real results we *got*."
             intro="Real Google numbers from a Perth client."
-            kpis="4,843+:people who viewed the profile:up;509+:profile interactions:up;295+:direction requests:up;189+:website clicks:up"
+            kpis="1,653:people who viewed the profile:up;98:profile interactions:up;267:searches showed the profile:up;83%:views from mobile:up"
             liveLabel="Live"
             months="Start,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Now"
-            range="since May 2026"
+            range="September 2026"
             reportLabel="Client report · 2026"
             tabs="Overview, SEO, Social, Ads"
             style={{ width: "100%" }}
@@ -1042,7 +1042,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
             posts="https://framerusercontent.com/images/xbfdpTvZzzafiJOwtXCs0luyp2I.webp|@yourcafe|2418|post;https://framerusercontent.com/images/1DPklcMWo4iq1F5uWVjcytvrsc.webp|@yourbeauty|8114|carousel|5;https://framerusercontent.com/images/yOk3vEq9TQ9CWpwuFmZY86mAVY.webp|@yourgym|3912|reel|48k;https://framerusercontent.com/images/s0jwUqVTFxGplLAwU0WLa8rbdw.webp|@yourbeachshop|5630|post;https://framerusercontent.com/images/YpYjh1duUyRdFMaCaQZ6JVDbmko.webp|@yourbakery|1204|post;https://framerusercontent.com/images/HeKFyo7MfYy7GEQSGOPGXvhVHvo.webp|@yourstore|9870|reel|112k;https://framerusercontent.com/images/oSWgZWTjPoakKUa7CvtJ6TXueP0.webp|@yourbeauty|3307|carousel|3;https://framerusercontent.com/images/3nqFQlS1bXsh1PS74cijri0AhSM.webp|@yourflorist|1786|post;https://framerusercontent.com/images/yg9StsTkn2mS5VxfA3YnyrJNM1Q.webp|@yourpetshop|2205|reel|21k;https://framerusercontent.com/images/mnE5eA5CunHm89doTbOt2H7pHdE.webp|@yourflorist|2874|carousel|4;https://framerusercontent.com/images/uYN9bcKFZFsqzLzQWUSswf4QIs.webp|@yourbakery|2951|carousel|6;https://framerusercontent.com/images/eMqxq3byjv5ceZYESvRLuMWVug.webp|@yourbeachshop|3690|post;https://framerusercontent.com/images/xbfdpTvZzzafiJOwtXCs0luyp2I.webp|@yourcafe|1932|post;https://framerusercontent.com/images/yOk3vEq9TQ9CWpwuFmZY86mAVY.webp|@yourgym|4480|reel|64k;https://framerusercontent.com/images/1DPklcMWo4iq1F5uWVjcytvrsc.webp|@yourbeauty|2660|carousel|3;https://framerusercontent.com/images/3nqFQlS1bXsh1PS74cijri0AhSM.webp|@yourflorist|1540|post;https://framerusercontent.com/images/HeKFyo7MfYy7GEQSGOPGXvhVHvo.webp|@yourstore|7120|reel|84k;https://framerusercontent.com/images/uYN9bcKFZFsqzLzQWUSswf4QIs.webp|@yourbakery|2074|carousel|4"
             reelLabel="views"
             stats="Reels;Carousels;Stories"
-            subCopy="We plan, shoot, edit and post for our clients every week. Reels, carousels and stories made for how each platform actually works."
+            subCopy="We plan, edit and post for our clients every week, using photos and clips you send us. Reels, carousels and stories made for how each platform actually works."
             style={{ width: "100%" }}
           />
         </div>
@@ -1147,7 +1147,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
             spotsTitle="Taking new clients now"
             spotsTotal={8}
             sub="Get a free audit of your site, socials and ads. We send you a written plan, and you keep it whether we work together or not."
-            teamNote="A focused remote team"
+            teamNote="Founder-led, remote"
             style={{ width: "100%" }}
           />
         </div>

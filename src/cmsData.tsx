@@ -611,7 +611,7 @@ export const CMS_ROWS: CmsRowData[] = [
     "f7": "2,209",
     "f8": "",
     "f9": "2026",
-    "f10": "Weekly posts, Reels and a fully set up Google profile. In 4 months, Google profile views went from 49 to 2,209. The Facebook page also reached 390,000 views.",
+    "f10": "Weekly posts, Reels and a fully set up Google profile. In September 2026, our first full month, 1,653 people viewed the Google profile. The Facebook page also reached 390,000 views.",
     "f11": "",
     "f12": "",
     "f13": "",

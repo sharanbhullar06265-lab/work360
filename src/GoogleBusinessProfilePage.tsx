@@ -316,7 +316,7 @@ export default function GoogleBusinessProfilePage() {
 
           <h2 id="what-results-have-we-seen">What results have we seen?</h2>
           <p>
-            We look after the Google Business Profile for West Road Farm, a farm stall in Western Australia. In 4 months, profile views grew from 49 to 2,209 a month. Between May and October 2026, 4,843 people viewed the profile, 295 asked Google for directions and 189 clicked through to the website.
+            We look after the Google Business Profile for West Road Farm, a farm stall in Western Australia. In September 2026, our first full month of work, 1,653 people viewed the profile and there were 98 profile interactions (calls, directions, website clicks and messages).
           </p>
           <p>
             Profile views are not the same as sales, but they show more people are finding the business.
